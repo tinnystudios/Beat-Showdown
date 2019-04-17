@@ -1,7 +1,8 @@
 ﻿using System;
+using App.Items.Models;
 
 [Serializable]
-public class PotionModel : IItemModel
+public class PotionModel : IConsumable
 {
     public int Hp;
 }

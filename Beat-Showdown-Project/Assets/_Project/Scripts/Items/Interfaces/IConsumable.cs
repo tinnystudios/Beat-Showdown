@@ -1,6 +1,6 @@
 ﻿namespace App.Items.Models
 {
-    public interface IConsumable
+    public interface IConsumable : IItemModel
     {
 
     }
