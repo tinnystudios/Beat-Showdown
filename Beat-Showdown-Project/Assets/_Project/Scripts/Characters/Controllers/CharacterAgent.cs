@@ -52,8 +52,12 @@ namespace App.Characters.Controllers
 
         public void UseItem(IItemAgent itemAgent)
         {
-            (itemAgent as IBind<CharacterStatus>)?.Bind(Status);
             itemAgent.Use();
+        }
+
+        public void BindItem(IItemAgent itemAgent)
+        {
+            (itemAgent as IBind<CharacterStatus>)?.Bind(Status);
         }
     }
 }
