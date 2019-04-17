@@ -1,6 +1,6 @@
 ﻿using App.Items.Models;
 
-public class GunAgent : ItemAgent<GunModel>
+public class GunAgent : ItemAgentBase<GunModel>
 {
     public GunAgent(GunModel model) : base(model)
     {

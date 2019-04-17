@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Game/Item/Gun")]
-public class GunAsset : ItemAsset<GunModel>
+public class GunAsset : ItemAssetBase<GunModel>
 {
     public GunAsset(GunModel model) : base(model)
     {

@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Game/Item/Consumable")]
-public class PotionAsset : ItemAsset<PotionModel>
+public class PotionAsset : ItemAssetBase<PotionModel>
 {
     public PotionAsset(PotionModel model) : base(model)
     {

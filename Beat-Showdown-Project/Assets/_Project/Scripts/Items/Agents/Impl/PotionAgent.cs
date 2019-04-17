@@ -2,7 +2,7 @@
 
 namespace Assets._Project.Scripts.Items
 {
-    public class PotionAgent : ItemAgent<PotionModel>, IBind<CharacterStatus>
+    public class PotionAgent : ItemAgentBase<PotionModel>, IBind<CharacterStatus>
     {
         private CharacterStatus _status;
 
