@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using App.Characters.Controllers;
+using App.Stages.Models;
 using UnityEngine;
 
-public class FreeStage : Stage
+public class WaveStage : Stage
 {
     public CharacterAgent[] Players;
+    public WaveStageModel Model;
 
     public override Coroutine Run()
     {
@@ -14,19 +16,17 @@ public class FreeStage : Stage
 
     private IEnumerator _Run()
     {
-        foreach (var agent in Players)
-        {
-            agent.Init();
-        }
+        Init();
 
         while (IsRunning)
         {
-            foreach (var agent in Players)
-            {
-                agent.ProcessInput();
-            }
-
+            foreach (var agent in Players) agent.ProcessInput();
             yield return null;
         }
+    }
+
+    private void Init()
+    {
+        foreach (var agent in Players) agent.Init();
     }
 }
