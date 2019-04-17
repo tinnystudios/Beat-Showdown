@@ -15,7 +15,7 @@ public class ItemView : MonoBehaviour, IPickable
         return ItemModel;
     }
 
-    public void Highlight()
+    public void Select()
     {
         Renderer.material.color = Color.blue;
     }

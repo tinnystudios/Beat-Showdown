@@ -30,7 +30,7 @@ namespace App.Characters.Controllers
             }
             else
             {
-                pickable.Highlight();
+                pickable.Select();
                 return pickable;
             }
 

@@ -2,11 +2,9 @@
 
 namespace App.Items.Models
 {
-    public interface IPickable
+    public interface IPickable : ISelectable
     {
         ItemModel PickUp();
-        void Highlight();
-        void Deselect();
         Transform transform { get; }
     }
 }
