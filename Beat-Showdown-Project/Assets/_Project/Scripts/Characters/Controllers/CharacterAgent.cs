@@ -13,9 +13,12 @@ namespace App.Characters.Controllers
 
         public CharacterView View;
 
+        public Inventory Inventory = new Inventory();
+
         [Header("Components")]
         public CharacterMotion Motion;
         public CharacterCombat Combat;
+        public CharacterSensory Sensory;
 
         public void Init()
         {
@@ -28,7 +31,19 @@ namespace App.Characters.Controllers
             if (Input.Jump) Motion.Jump();
             if (Input.Attack) Combat.Attack();
 
+            ProcessPickUp();
+
             Motion.Move(Input.Move);
+        }
+
+        private void ProcessPickUp()
+        {
+            var pickInterface = Sensory.FindNearestPickable(transform.position, transform.forward);
+
+            if (Input.PickUp && pickInterface != null)
+            {
+                Inventory.Add(pickInterface.PickUp());
+            }
         }
 
         public void TakeDamage()
