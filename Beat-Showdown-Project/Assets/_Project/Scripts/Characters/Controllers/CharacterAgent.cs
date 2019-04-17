@@ -32,7 +32,6 @@ namespace App.Characters.Controllers
             if (Input.Attack) Combat.Attack();
 
             ProcessPickUp();
-
             Motion.Move(Input.Move);
         }
 
@@ -42,13 +41,19 @@ namespace App.Characters.Controllers
 
             if (Input.PickUp && pickInterface != null)
             {
-                Inventory.Add(pickInterface.PickUp());
+                PickUp(pickInterface.PickItem());
             }
         }
 
-        public void TakeDamage()
+        public void PickUp(IItemAssetAgent itemAssetAgent)
         {
-            Status.DeductHp(1);
+            var agent = itemAssetAgent.CreateAgent();
+        }
+
+        public void UseItem(IItemAgent itemAgent)
+        {
+            (itemAgent as IBind<CharacterStatus>)?.Bind(Status);
+            itemAgent.Use();
         }
     }
 }

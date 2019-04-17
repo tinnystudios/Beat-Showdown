@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
-using App.Items.Models;
 
 public class Inventory
 {
-    public List<ItemModel> Items = new List<ItemModel>();
+    public List<IItemAgent> Items = new List<IItemAgent>();
 
     public Inventory()
     {
 
     }
 
-    public void Add(ItemModel item)
+    public void Add(IItemAgent item)
     {
         Items.Add(item);
     }

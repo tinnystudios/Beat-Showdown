@@ -25,5 +25,11 @@ namespace App.Characters.Models
             Hp -= amount;
             OnHpChanged?.Invoke(Hp);
         }
+
+        public void AddHp(int amount)
+        {
+            Hp += amount;
+            OnHpChanged?.Invoke(Hp);
+        }
     }
 }

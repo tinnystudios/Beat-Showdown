@@ -3,6 +3,9 @@ using App.Characters.Controllers;
 using App.Stages.Models;
 using UnityEngine;
 
+/// <summary>
+/// Run all waves from WaveStageModel
+/// </summary>
 public class WaveStage : Stage
 {
     public CharacterAgent[] Players;
