@@ -4,7 +4,7 @@ namespace App.Characters.Components
 {
     public class CharacterCombat : MonoBehaviour
     {
-        public void Attack()
+        public virtual void Attack()
         {
             Debug.Log("Attack!");
         }

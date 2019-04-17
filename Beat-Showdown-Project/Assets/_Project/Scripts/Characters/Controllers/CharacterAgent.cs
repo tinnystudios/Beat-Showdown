@@ -19,13 +19,8 @@ namespace App.Characters.Controllers
 
         public void Init()
         {
-            Status = new CharacterStatus(hp: 10, maxHp: 10);
+            Status = new CharacterStatus(hp: 5, maxHp: 10);
             View.Init(Status);
-        }
-
-        private void Update()
-        {
-            ProcessInput();
         }
 
         public void ProcessInput()
@@ -36,7 +31,7 @@ namespace App.Characters.Controllers
             Motion.Move(Input.Move);
         }
 
-        private void TakeDamage()
+        public void TakeDamage()
         {
             Status.DeductHp(1);
         }
