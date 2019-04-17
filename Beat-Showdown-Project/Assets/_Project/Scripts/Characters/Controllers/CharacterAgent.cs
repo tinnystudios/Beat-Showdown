@@ -1,7 +1,9 @@
-﻿using App.Characters.Components;
+﻿using App.Game.UserInput;
+
+using App.Characters.Components;
 using App.Characters.Models;
 using App.Characters.Views;
-using App.Game.UserInput;
+
 using UnityEngine;
 
 namespace App.Characters.Controllers
@@ -47,7 +49,7 @@ namespace App.Characters.Controllers
 
         public void PickUp(IItemAssetAgent itemAssetAgent)
         {
-            var agent = itemAssetAgent.CreateAgent();
+            Inventory.Add(itemAssetAgent.CreateAgent());
         }
 
         public void UseItem(IItemAgent itemAgent)
