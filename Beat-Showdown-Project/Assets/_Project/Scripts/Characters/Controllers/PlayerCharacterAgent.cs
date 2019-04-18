@@ -26,6 +26,16 @@ namespace App.Characters.Controllers
             }
         }
 
+        public void PickUp(IItemAssetAgent itemAssetAgent)
+        {
+            var itemAgent = itemAssetAgent.CreateAgent();
+
+            BindItem((itemAgent));
+            (itemAgent as IConsumableAgent)?.Use();
+
+            Inventory.Add(itemAgent);
+        }
+
         public void UseItem(IItemAgent itemAgent)
         {
             itemAgent.Use();

@@ -3,6 +3,5 @@
     public interface ICharacterAgent
     {
         void Init();
-        void PickUp(IItemAssetAgent itemAssetAgent);
     }
 }

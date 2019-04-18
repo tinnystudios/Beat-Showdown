@@ -23,10 +23,5 @@ namespace App.Characters.Controllers
             Status = new CharacterStatus(hp: 5, maxHp: 10);
             View.Init(Status);
         }
-
-        public void PickUp(IItemAssetAgent itemAssetAgent)
-        {
-            Inventory.Add(itemAssetAgent.CreateAgent());
-        }
     }
 }

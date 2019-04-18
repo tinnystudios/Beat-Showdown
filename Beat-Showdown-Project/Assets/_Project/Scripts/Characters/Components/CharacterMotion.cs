@@ -15,6 +15,9 @@ namespace App.Characters.Components
 
         public void Move(Vector3 direction)
         {
+            if(direction.magnitude > 0.1F)
+                transform.rotation = Quaternion.LookRotation(direction);
+
             transform.position += direction * MotionModel.MoveSpeed * Time.deltaTime;
         }
     }
