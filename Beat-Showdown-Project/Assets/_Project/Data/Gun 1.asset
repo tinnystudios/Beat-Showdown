@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22dcb5006ec5a874eb5bf9b96a571fee, type: 3}
-  m_Name: Potion
+  m_Script: {fileID: 11500000, guid: 39c24046b1e16ed4ebb13333e10d2f2b, type: 3}
+  m_Name: Gun 1
   m_EditorClassIdentifier: 
   Model:
-    Hp: 3
+    Power: 10
+    BulletPrefab: {fileID: 0}

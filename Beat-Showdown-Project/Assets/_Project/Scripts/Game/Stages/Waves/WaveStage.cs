@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class WaveStage : Stage
 {
-    public CharacterAgent[] Players;
+    public PlayerCharacterAgent[] Players;
     public WaveStageModel Model;
 
     public override Coroutine Run()
