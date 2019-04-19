@@ -1,10 +1,8 @@
 ﻿using App.Items.Models;
 using UnityEngine;
 
-public class GunAgent : ItemAgentBase<GunModel>, IWeaponAgent
+public class GunAgent : EquipmentAgent<GunModel, GunView>, IWeaponAgent
 {
-    private GunView _view;
-
     public GunAgent(GunModel model) : base(model)
     {
 
@@ -18,18 +16,4 @@ public class GunAgent : ItemAgentBase<GunModel>, IWeaponAgent
         var bullet = GameObject.Instantiate(Model.BulletPrefab, position, rotation);
         bullet.Init(Model.Power);
     }
-
-    // #TODO Create an EquipmentAgent that generates views with the model
-    public override IItemView View()
-    {
-        if(_view == null)
-            _view = GameObject.Instantiate(Model.Prefab);
-
-        return _view;
-    }
-}
-
-public interface IWeaponAgent
-{
-
 }

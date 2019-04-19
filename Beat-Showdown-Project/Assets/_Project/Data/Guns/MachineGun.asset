@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39c24046b1e16ed4ebb13333e10d2f2b, type: 3}
-  m_Name: Pistol
+  m_Name: MachineGun
   m_EditorClassIdentifier: 
   Model:
-    Power: 10
-    Prefab: {fileID: 2115125982748364342, guid: 205805fc1840a1046a05531ae5452b1d,
+    Prefab: {fileID: 8663343089384559945, guid: ca5d3ac9de0c30e46b0db2f4c209cc53,
       type: 3}
+    Power: 20
     BulletPrefab: {fileID: 8236978864216961225, guid: 2090c8eb602cb6a46879cedf60d8b544,
       type: 3}
