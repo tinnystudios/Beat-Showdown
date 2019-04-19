@@ -11,6 +11,12 @@ namespace Assets._Project.Scripts.Items
 
         }
 
+        public override IItemView View()
+        {
+            // Currently the potion does not have a view
+            return null;
+        }
+
         public override void Use()
         {
             _status.AddHp(Model.Hp);
@@ -21,9 +27,4 @@ namespace Assets._Project.Scripts.Items
             _status = status;
         }
     }
-}
-
-public interface IConsumableAgent : IItemAgent
-{
-
 }

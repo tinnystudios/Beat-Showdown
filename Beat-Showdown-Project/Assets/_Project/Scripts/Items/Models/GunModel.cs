@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 namespace App.Items.Models
 {
@@ -7,6 +6,7 @@ namespace App.Items.Models
     public class GunModel : IWeaponModel
     {
         public int Power = 10;
-        public GameObject BulletPrefab;
+        public GunView Prefab;
+        public BulletComponent BulletPrefab;
     }
 }

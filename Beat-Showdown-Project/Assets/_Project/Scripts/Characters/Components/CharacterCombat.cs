@@ -4,11 +4,16 @@ namespace App.Characters.Components
 {
     public class CharacterCombat : MonoBehaviour
     {
-        // The attack depends on the Item you are holding
+        public IItemAgent WeaponAgent { get; private set; }
+
+        public void SetWeapon(IItemAgent weapon)
+        {
+            WeaponAgent = weapon;
+        }
 
         public virtual void Attack()
         {
-            Debug.Log("Attack!");
+            WeaponAgent?.Use();
         }
     }
 }

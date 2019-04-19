@@ -8,4 +8,5 @@
     }
 
     public abstract void Use();
+    public abstract IItemView View();
 }
