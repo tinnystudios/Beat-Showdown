@@ -1,8 +1,8 @@
-﻿public abstract class ItemAgentBase<T> : IItemAgent
+﻿public abstract class ItemBaseAgent<T> : IItemAgent
 {
     public T Model { get; set; }
 
-    protected ItemAgentBase(T model)
+    protected ItemBaseAgent(T model)
     {
         Model = model;
     }

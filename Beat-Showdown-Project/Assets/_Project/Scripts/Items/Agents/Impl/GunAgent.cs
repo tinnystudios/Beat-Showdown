@@ -1,7 +1,7 @@
 ﻿using App.Items.Models;
 using UnityEngine;
 
-public class GunAgent : EquipmentAgent<GunModel, GunView>, IWeaponAgent
+public class GunAgent : EquipmentBaseAgent<GunModel, GunView>, IWeaponAgent
 {
     public GunAgent(GunModel model) : base(model)
     {

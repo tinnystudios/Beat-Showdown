@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public abstract class EquipmentAgent<TModel, TView> : ItemAgentBase<TModel> where TModel : EquipmentModel<TView> where TView : ItemBaseView
+public abstract class EquipmentBaseAgent<TModel, TView> : ItemBaseAgent<TModel> where TModel : EquipmentBaseModel<TView> where TView : ItemBaseView
 {
     protected IItemView _view;
 
-    public EquipmentAgent(TModel model) : base(model)
+    public EquipmentBaseAgent(TModel model) : base(model)
     {
 
     }
