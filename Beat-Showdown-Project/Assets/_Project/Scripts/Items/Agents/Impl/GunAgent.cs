@@ -8,6 +8,8 @@ public class GunAgent : EquipmentBaseAgent<GunModel, GunView>, IWeaponAgent
 
     }
 
+    public EWeaponType WeaponType => EWeaponType.Gun;
+
     public override void Use()
     {
         var position = View().transform.position;

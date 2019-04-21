@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39c24046b1e16ed4ebb13333e10d2f2b, type: 3}
-  m_Name: MachineGun
+  m_Script: {fileID: 11500000, guid: 8d09cee3913945241a7f6f1225067de2, type: 3}
+  m_Name: Sword
   m_EditorClassIdentifier: 
   Model:
-    Prefab: {fileID: 8663343089384559945, guid: ca5d3ac9de0c30e46b0db2f4c209cc53,
-      type: 3}
-    Power: 10
-    BulletPrefab: {fileID: 8236978864216961225, guid: 2090c8eb602cb6a46879cedf60d8b544,
+    Prefab: {fileID: 8087427766621772056, guid: b7a3a369d7b5a774f8aac094f582cc14,
       type: 3}

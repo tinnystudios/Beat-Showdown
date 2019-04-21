@@ -1,14 +1,19 @@
-﻿using App.Characters.Models;
+﻿using App.Characters.Components;
+using App.Characters.Models;
 using App.Game.UserInput;
+using UnityEngine;
 
 namespace App.Characters.Controllers
 {
     public class PlayerCharacterAgent : CharacterAgent, IPlayerCharacterAgent
     {
-        public CharacterInput Input = new CharacterInput();
-        public AvatarAnchorView HandAnchor;
+        [Header("Components")]
+        public CharacterMotion Motion;
+        public CharacterCombat Combat;
+        public CharacterSensory Sensory;
 
-        private IItemAgent _weaponAgent; //Change this to a weapon interface soon
+        public CharacterInput Input = new CharacterInput();
+        public CharacterEquipment Equipment;
 
         public void ProcessInput()
         {
@@ -35,12 +40,14 @@ namespace App.Characters.Controllers
 
             BindItem((itemAgent));
             (itemAgent as IConsumableAgent)?.Use();
+            TryEquip(itemAgent);
+        }
 
+        private void TryEquip(IItemAgent itemAgent)
+        {
             var weapon = itemAgent as IWeaponAgent;
             if (weapon != null)
-                Equip(itemAgent);
-
-            Inventory.Add(itemAgent);
+                Equipment.Equip(weapon);
         }
 
         public void UseItem(IItemAgent itemAgent)
@@ -48,25 +55,10 @@ namespace App.Characters.Controllers
             itemAgent.Use();
         }
 
-        public void Equip(IItemAgent itemAgent)
-        {
-            if (_weaponAgent != null)
-                UnEquip(_weaponAgent);
-
-            itemAgent.View().SetAvatar(HandAnchor);
-            _weaponAgent = itemAgent;
-
-            Combat.SetWeapon(_weaponAgent);
-        }
-
-        public void UnEquip(IItemAgent itemAgent)
-        {
-            itemAgent.View().Exit();
-        }
-
         public void BindItem(IItemAgent itemAgent)
         {
             (itemAgent as IBind<CharacterStatus>)?.Bind(Status);
+            (itemAgent as IBind<CharacterCombat>)?.Bind(Combat);
         }
     }
 }
