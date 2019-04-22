@@ -87,8 +87,3 @@ public class BPMTool : MonoBehaviour
         }
     }
 }
-
-public class BeatEventArgs
-{
-    public int Index { get; set; }
-}

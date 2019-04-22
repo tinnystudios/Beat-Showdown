@@ -1,43 +1,37 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public interface INote
+public class BeatMeterAgent : MonoBehaviour
 {
-    int Index { get; set; }
-    float Progress { get; set; }
-    void Finish();
-}
-
-public class Note : INote
-{
-    public int Index { get; set; }
-    public float Progress { get; set; }
-    public void Finish()
-    {
-
-    }
-}
-
-public class SongRunner : MonoBehaviour
-{
-    [Header("Song Configs")]
     public BPMTool BPMTool;
-    public AudioClip Clip;
     public BeatMeterView BeatMeterView;
 
-    private List<INote> _notes = new List<INote>();
+    [Header("Song Configuration")]
+    public AudioClip Clip;
+    public int BPM;
+
+    private List<INoteModel> _notes = new List<INoteModel>();
 
     private void Awake()
     {
-        BPMTool.Play(Clip, 128);
+        BPMTool.Play(Clip, BPM);
         BPMTool.OnBeat += OnPlayBeat;
+    }
+
+    private void OnDestroy()
+    {
+        BPMTool.OnBeat -= OnPlayBeat;
+    }
+
+    private void Update()
+    {
+        TryClean();
+        MoveNotes();
     }
 
     public void OnPlayBeat(BeatEventArgs beatArgs)
     {
-        var instance = new Note
+        var instance = new NoteModel
         {
             Index = beatArgs.Index
         };
@@ -56,7 +50,7 @@ public class SongRunner : MonoBehaviour
 
     public void TryClean()
     {
-        List<INote> toRemove = new List<INote>();
+        List<INoteModel> toRemove = new List<INoteModel>();
         foreach (var note in _notes)
         {
             if (note.Progress >= 1)
@@ -70,11 +64,5 @@ public class SongRunner : MonoBehaviour
             _notes.Remove(note);
             note.Finish();
         }
-    }
-
-    private void Update()
-    {
-        TryClean();
-        MoveNotes();
     }
 }
