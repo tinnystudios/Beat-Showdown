@@ -15,16 +15,32 @@ namespace App.Characters.Controllers
         public CharacterInput Input = new CharacterInput();
         public CharacterEquipment Equipment;
 
-        public void ProcessInput()
+        public virtual void ProcessInput()
         {
-            if (Input.Jump) Motion.Jump();
-            if (Input.Attack) Combat.Attack();
-
+            ProcessJumpInput();
+            ProcessCombatInput();
+            ProcessMotionInput();
             ProcessPickUp();
+        }
+
+        public virtual void ProcessJumpInput()
+        {
+            if (Input.Jump)
+                Motion.Jump();
+        }
+
+        public virtual void ProcessMotionInput()
+        {
             Motion.Move(Input.Move);
         }
 
-        public void ProcessPickUp()
+        public virtual void ProcessCombatInput()
+        {
+            if (Input.Attack)
+                Combat.Attack();
+        }
+
+        public virtual void ProcessPickUp()
         {
             var pickInterface = Sensory.FindNearestPickable(transform.position, transform.forward);
 
@@ -34,7 +50,7 @@ namespace App.Characters.Controllers
             }
         }
 
-        public void PickUp(IItemAssetAgent itemAssetAgent)
+        public virtual void PickUp(IItemAssetAgent itemAssetAgent)
         {
             var itemAgent = itemAssetAgent.CreateAgent();
 
@@ -43,19 +59,19 @@ namespace App.Characters.Controllers
             TryEquip(itemAgent);
         }
 
-        private void TryEquip(IItemAgent itemAgent)
+        public virtual void TryEquip(IItemAgent itemAgent)
         {
             var weapon = itemAgent as IWeaponAgent;
             if (weapon != null)
                 Equipment.Equip(weapon);
         }
 
-        public void UseItem(IItemAgent itemAgent)
+        public virtual void UseItem(IItemAgent itemAgent)
         {
             itemAgent.Use();
         }
 
-        public void BindItem(IItemAgent itemAgent)
+        public virtual void BindItem(IItemAgent itemAgent)
         {
             (itemAgent as IBind<CharacterStatus>)?.Bind(Status);
             (itemAgent as IBind<CharacterCombat>)?.Bind(Combat);

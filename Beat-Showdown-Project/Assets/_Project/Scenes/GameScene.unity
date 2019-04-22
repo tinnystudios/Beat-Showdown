@@ -480,6 +480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 678386765}
   - component: {fileID: 678386766}
+  - component: {fileID: 678386767}
   m_Layer: 0
   m_Name: '[GameScene]'
   m_TagString: Untagged
@@ -519,6 +520,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stage: {fileID: 1338743718}
+  GameBinder: {fileID: 678386767}
+--- !u!114 &678386767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678386764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9fadafa6f8b2149976148a558edb17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BeatMeterAgent: {fileID: 1155732633}
 --- !u!1 &696062991
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,8 +955,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2010443e0b17e58478c1fb88ca6b2e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Players:
-  - {fileID: 7020934507782612262}
   Model: {fileID: 11400000, guid: 33eb182cb3b139c40ae214676a46ed35, type: 2}
 --- !u!4 &1338743719
 Transform:
@@ -1694,15 +1707,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7777acba09e5c5945b2cab50b159339d, type: 3}
---- !u!114 &7020934507782612262 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4140878218623170618, guid: 7777acba09e5c5945b2cab50b159339d,
-    type: 3}
-  m_PrefabInstance: {fileID: 7020934507782612261}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c681b65708898b24e8bbaf1fcf72caaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

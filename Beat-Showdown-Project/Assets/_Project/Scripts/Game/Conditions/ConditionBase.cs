@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class ConditionBase<T> : ScriptableObject, IBind<T> where T : class
+public abstract class ConditionBase<T> : ConditionBase, IBind<T> where T : class
 {
     public T Value;
 
@@ -8,6 +8,9 @@ public abstract class ConditionBase<T> : ScriptableObject, IBind<T> where T : cl
     {
         Value = dependency;
     }
+}
 
+public abstract class ConditionBase : ScriptableObject
+{
     public abstract bool Pass { get; }
 }

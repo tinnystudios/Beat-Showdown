@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The BeatMeterAgent also contains the Model
+/// </summary>
 public class BeatMeterAgent : MonoBehaviour
 {
     public BPMTool BPMTool;
@@ -11,6 +14,8 @@ public class BeatMeterAgent : MonoBehaviour
     public int BPM;
 
     private List<INoteModel> _notes = new List<INoteModel>();
+
+    public float Progress { get; private set; }
 
     private void Awake()
     {
@@ -45,6 +50,7 @@ public class BeatMeterAgent : MonoBehaviour
         {
             float t = (float)(BPMTool.Lead - (BPMTool.NoteArgs[note.Index].Index - BPMTool.SongPosInBeats)) / BPMTool.Lead;
             BeatMeterView.SetFill(t);
+            Progress = t;
         }
     }
 

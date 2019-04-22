@@ -4,10 +4,11 @@ using UnityEngine;
 public class GameScene : MonoBehaviour
 {
     public Stage Stage;
+    public GameDataBinder GameBinder;
 
-    // This is where Flow would be useful?
     private IEnumerator Start()
     {
+        GameBinder.Bind();
         yield return OpeningIntro();
         yield return Stage.Run();
         yield return Ending();
