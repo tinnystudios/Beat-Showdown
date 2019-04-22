@@ -755,6 +755,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 6712555442682071231}
+  GunnerOverrideController: {fileID: 22100000, guid: fcb6eeb9f09d1c04b8f5e1c99b84cf88,
+    type: 2}
+  SwordsmanOverrideController: {fileID: 22100000, guid: 31ee0b0597f0e594ebb0679fa32cfc3a,
+    type: 2}
 --- !u!54 &7020934506792054568
 Rigidbody:
   m_ObjectHideFlags: 0

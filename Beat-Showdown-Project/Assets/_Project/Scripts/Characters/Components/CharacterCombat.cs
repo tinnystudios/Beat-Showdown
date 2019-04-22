@@ -5,6 +5,10 @@ namespace App.Characters.Components
     public class CharacterCombat : MonoBehaviour
     {
         public Animator Animator;
+
+        public AnimatorOverrideController GunnerOverrideController;
+        public AnimatorOverrideController SwordsmanOverrideController;
+
         public IWeaponAgent WeaponAgent { get; private set; }
 
         public void SetWeapon(IWeaponAgent weapon)
@@ -21,7 +25,17 @@ namespace App.Characters.Components
 
         public void SetAnimatorUser()
         {
-            Animator.SetTrigger($"{WeaponAgent.WeaponType}");
+            // #TODO The Model of a weapon type would contain its AnimatorOverrideController
+            switch (WeaponAgent.WeaponType)
+            {
+                case EWeaponType.Gun:
+                    Animator.runtimeAnimatorController = GunnerOverrideController;
+                    break;
+
+                case EWeaponType.Sword:
+                    Animator.runtimeAnimatorController = SwordsmanOverrideController;
+                    break;
+            }
         }
     }
 }
