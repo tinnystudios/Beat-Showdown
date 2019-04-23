@@ -25,8 +25,7 @@ namespace App.Characters.Controllers
 
         public virtual void ProcessJumpInput()
         {
-            if (Input.Jump)
-                Motion.Jump();
+            if (Input.Jump) Motion.Jump();
         }
 
         public virtual void ProcessMotionInput()
@@ -36,8 +35,7 @@ namespace App.Characters.Controllers
 
         public virtual void ProcessCombatInput()
         {
-            if (Input.Attack)
-                Combat.Attack();
+
         }
 
         public virtual void ProcessPickUp()
