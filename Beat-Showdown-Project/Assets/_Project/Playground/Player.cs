@@ -6,11 +6,18 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        InputConfig.Attack.action.Enable();
-        InputConfig.Attack.action.performed += cont => Debug.Log("Attack");
-
-        InputConfig.Move.action.Enable();
+        InputConfig.Attack.action.performed += cont => Debug.Log($"{transform.name} Attack");
+        InputConfig.Jump.action.performed += cont => Debug.Log($"{transform.name} Jump");
+        InputConfig.PickUp.action.performed += cont => Debug.Log($"{transform.name} PickUp");
         InputConfig.Move.action.performed += OnMove;
+    }
+
+    private void OnEnable()
+    {
+        InputConfig.Attack.action.Enable();
+        InputConfig.Move.action.Enable();
+        InputConfig.Jump.action.Enable();
+        InputConfig.PickUp.action.Enable();
     }
 
     private void OnDisable()

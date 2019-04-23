@@ -9,6 +9,8 @@ ScriptedImporter:
     11400008: Player1/Jump
     11400010: Player1/PickUp
     11400012: Player2/Move
+    11400014: Player2/Jump
+    11400016: Player2/PickUp
   externalObjects: {}
   userData: 
   assetBundleName: 

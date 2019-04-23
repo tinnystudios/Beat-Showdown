@@ -6,4 +6,6 @@ public class PlayerInputConfig : ScriptableObject
 {
     public InputActionReference Attack;
     public InputActionReference Move;
+    public InputActionReference Jump;
+    public InputActionReference PickUp;
 }
