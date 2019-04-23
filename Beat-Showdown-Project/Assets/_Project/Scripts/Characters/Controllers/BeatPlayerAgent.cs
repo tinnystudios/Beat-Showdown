@@ -1,5 +1,4 @@
 ﻿using App.Characters.Controllers;
-using UnityEngine.Experimental.Input;
 
 /// <summary>
 /// A Game Implementation of PlayerCharacterAgent
