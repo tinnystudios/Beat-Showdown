@@ -2,9 +2,7 @@
 {
     public interface IPlayerCharacterAgent
     {
-        void ProcessInput();
-        void ProcessPickUp();
+        void Process();
         void UseItem(IItemAgent itemAgent);
-        void PickUp(IItemAssetAgent itemAssetAgent);
     }
 }

@@ -166,7 +166,7 @@
                     "continuous": true,
                     "passThrough": false,
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "bindings": []
                 },
                 {

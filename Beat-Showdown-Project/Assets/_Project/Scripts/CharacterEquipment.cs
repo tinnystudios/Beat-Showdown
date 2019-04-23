@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class CharacterEquipment : MonoBehaviour, ICharacterEquipment
+public class CharacterEquipment : MonoBehaviour, IBind<IPickableAgent>, ICharacterEquipment
 {
     public CharacterAvatar Avatar;
 
@@ -9,6 +9,15 @@ public class CharacterEquipment : MonoBehaviour, ICharacterEquipment
     public Action<IWeaponAgent> OnUnequip { get; set; }
 
     public IWeaponAgent WeaponAgent { get; private set; }
+
+    public void Bind(IPickableAgent pickableAgent) { pickableAgent.OnPickUp += TryEquip; }
+
+    public void TryEquip(IItemAgent itemAgent)
+    {
+        var weapon = itemAgent as IWeaponAgent;
+        if (weapon != null)
+            Equip(weapon);
+    }
 
     public void Equip(IWeaponAgent weaponAgent)
     {
