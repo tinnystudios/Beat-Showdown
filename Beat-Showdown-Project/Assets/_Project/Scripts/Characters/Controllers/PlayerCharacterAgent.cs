@@ -12,9 +12,10 @@ namespace App.Characters.Controllers
         public CharacterMotion Motion;
         public CharacterCombat Combat;
         public CharacterSensory Sensory;
-
-        public PlayerInputConfig InputConfig;
         public CharacterEquipment Equipment;
+
+        [Header("Configs")]
+        public PlayerInputConfig InputConfig;
 
         private IPickable _pickInterface;
 
