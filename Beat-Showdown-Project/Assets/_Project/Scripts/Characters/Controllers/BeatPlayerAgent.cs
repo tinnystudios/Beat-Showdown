@@ -8,12 +8,6 @@ public class BeatPlayerAgent : PlayerCharacterAgent, IBind<BeatMeterAgent>
 {
     public BeatCondition BeatCondition;
 
-    public override void ProcessCombatInput()
-    {
-        if (BeatCondition.Pass)
-            base.ProcessCombatInput();
-    }
-
     public void Bind(BeatMeterAgent beatMeterAgent)
     {
         BeatCondition.Bind(beatMeterAgent);

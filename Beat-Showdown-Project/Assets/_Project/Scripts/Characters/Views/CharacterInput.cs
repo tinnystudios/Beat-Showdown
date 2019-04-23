@@ -9,9 +9,4 @@ namespace App.Game.UserInput
         public virtual bool Attack => GameInput.Attack;
         public virtual bool PickUp => GameInput.PickUp;
     }
-
-    public class Player2Input : CharacterInput
-    {
-        
-    }
 }

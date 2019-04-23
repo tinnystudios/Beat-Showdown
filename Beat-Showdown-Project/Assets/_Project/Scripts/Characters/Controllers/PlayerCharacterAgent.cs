@@ -1,7 +1,8 @@
 ﻿using App.Characters.Components;
 using App.Characters.Models;
-using App.Game.UserInput;
+using App.Items.Models;
 using UnityEngine;
+using UnityEngine.Experimental.Input;
 
 namespace App.Characters.Controllers
 {
@@ -12,40 +13,42 @@ namespace App.Characters.Controllers
         public CharacterCombat Combat;
         public CharacterSensory Sensory;
 
-        public CharacterInput Input = new CharacterInput();
+        public PlayerInputConfig InputConfig;
         public CharacterEquipment Equipment;
+
+        private IPickable _pickInterface;
+
+        public override void Init()
+        {
+            base.Init();
+
+            InputConfig.Init();
+            InputConfig.MoveAction.performed += OnMove;
+            InputConfig.AttackAction.performed += context => Combat.Attack();
+            InputConfig.JumpAction.performed += context => Motion.Jump();
+            InputConfig.PickUpAction.performed += context =>
+            {
+                if (_pickInterface != null)
+                    PickUp(_pickInterface.PickItem());
+            };
+        }
+
+        private void OnMove(InputAction.CallbackContext context)
+        {
+            var delta = context.ReadValue<Vector2>();
+            var dir = new Vector3(delta.x, 0, delta.y);
+
+            Motion.Move(dir);
+        }
 
         public virtual void ProcessInput()
         {
-            ProcessJumpInput();
-            ProcessCombatInput();
-            ProcessMotionInput();
             ProcessPickUp();
-        }
-
-        public virtual void ProcessJumpInput()
-        {
-            if (Input.Jump) Motion.Jump();
-        }
-
-        public virtual void ProcessMotionInput()
-        {
-            Motion.Move(Input.Move);
-        }
-
-        public virtual void ProcessCombatInput()
-        {
-
         }
 
         public virtual void ProcessPickUp()
         {
-            var pickInterface = Sensory.FindNearestPickable(transform.position, transform.forward);
-
-            if (Input.PickUp && pickInterface != null)
-            {
-                PickUp(pickInterface.PickItem());
-            }
+            _pickInterface = Sensory.FindNearestPickable(transform.position, transform.forward);
         }
 
         public virtual void PickUp(IItemAssetAgent itemAssetAgent)
