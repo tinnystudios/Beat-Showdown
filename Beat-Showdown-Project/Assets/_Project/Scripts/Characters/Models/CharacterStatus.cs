@@ -2,9 +2,9 @@
 
 namespace App.Characters.Models
 {
-    public class CharacterStatus
+    public class CharacterStatus : ICharacterStatus
     {
-        public event Action<int> OnHpChanged;
+        public Action<int> OnHpChanged { get;set; }
 
         public CharacterStatus(int hp, int maxHp)
         {
@@ -31,5 +31,15 @@ namespace App.Characters.Models
             Hp += amount;
             OnHpChanged?.Invoke(Hp);
         }
+    }
+
+    public interface ICharacterStatus
+    {
+        Action<int> OnHpChanged { get; set; }
+        float Hp01 { get; }
+        int Hp { get; }
+        int MaxHp { get; }
+        void AddHp(int amount);
+        void DeductHp(int amount);
     }
 }

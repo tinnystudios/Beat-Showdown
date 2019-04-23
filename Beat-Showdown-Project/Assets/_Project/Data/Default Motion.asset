@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2188d37c230e241a431a60ff1c0ed7, type: 3}
   m_Name: Default Motion
   m_EditorClassIdentifier: 
-  MoveSpeed: 10
-  JumpForce: 5
+  MoveSpeed: 3
+  JumpForce: 8

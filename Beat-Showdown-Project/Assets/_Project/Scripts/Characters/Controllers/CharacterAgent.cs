@@ -5,15 +5,11 @@ using UnityEngine;
 
 namespace App.Characters.Controllers
 {
-    public class CharacterAgent : MonoBehaviour, ICharacterAgent
+    public abstract class CharacterAgent : MonoBehaviour, ICharacterAgent
     {
-        public CharacterStatus Status = null;
+        public CharacterStatus Status = new CharacterStatus(hp: 5, maxHp: 10);
         public CharacterView View;
 
-        public virtual void Init()
-        {
-            Status = new CharacterStatus(hp: 5, maxHp: 10);
-            View.Init(Status);
-        }
+        public abstract void Init();
     }
 }

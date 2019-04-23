@@ -3,14 +3,16 @@ using UnityEngine;
 
 namespace App.Characters.Components
 {
-    public class CharacterMotion : MonoBehaviour
+    public class CharacterMotion : MonoBehaviour, IBind<Rigidbody>
     {
-        public MotionModel MotionModel;
-        public Rigidbody Rb;
+        [SerializeField] private MotionModel _MotionModel;
+        private Rigidbody _rigidBody;
+
+        public void Bind(Rigidbody rigidBody) { _rigidBody = rigidBody; }
 
         public void Jump()
         {
-            Rb.velocity = Vector3.up * MotionModel.JumpForce;
+            _rigidBody.velocity = Vector3.up * _MotionModel.JumpForce;
         }
 
         public void Move(Vector3 direction)
@@ -18,7 +20,7 @@ namespace App.Characters.Components
             if(direction.magnitude > 0.1F)
                 transform.rotation = Quaternion.LookRotation(direction);
 
-            transform.position += direction * MotionModel.MoveSpeed * Time.deltaTime;
+            transform.position += direction * _MotionModel.MoveSpeed * Time.deltaTime;
         }
     }
 }

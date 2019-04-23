@@ -6,6 +6,7 @@ using UnityEngine.Experimental.Input;
 
 namespace App.Characters.Controllers
 {
+    [RequireComponent(typeof(Rigidbody))]
     public class PlayerCharacterAgent : CharacterAgent, IPlayerCharacterAgent
     {
         [Header("Components")]
@@ -13,6 +14,7 @@ namespace App.Characters.Controllers
         public CharacterCombat Combat;
         public CharacterSensory Sensory;
         public CharacterEquipment Equipment;
+        public CharacterAnimator Animator;
 
         [Header("Configs")]
         public PlayerInputConfig InputConfig;
@@ -21,8 +23,12 @@ namespace App.Characters.Controllers
 
         public override void Init()
         {
-            base.Init();
+            MapInput();
+            BindCharacterComponents();
+        }
 
+        private void MapInput()
+        {
             InputConfig.Init();
             InputConfig.MoveAction.performed += OnMove;
             InputConfig.AttackAction.performed += context => Combat.Attack();
@@ -32,6 +38,16 @@ namespace App.Characters.Controllers
                 if (_pickInterface != null)
                     PickUp(_pickInterface.PickItem());
             };
+        }
+
+        private void BindCharacterComponents()
+        {
+            this.Bind<IBind<ICharacterCombat>, ICharacterCombat>(Combat);
+            this.Bind<IBind<ICharacterEquipment>, ICharacterEquipment>(Equipment);
+            this.Bind<IBind<ICharacterAnimator>, ICharacterAnimator>(Animator);
+            this.Bind<IBind<ICharacterAgent>, ICharacterAgent>(this);
+            this.Bind<IBind<Rigidbody>, Rigidbody>(GetComponent<Rigidbody>());
+            this.Bind<IBind<ICharacterStatus>, ICharacterStatus>(Status);
         }
 
         private void OnMove(InputAction.CallbackContext context)

@@ -4,17 +4,17 @@ using UnityEngine.UI;
 
 namespace App.Characters.Views
 {
-    public class CharacterView : MonoBehaviour
+    public class CharacterView : MonoBehaviour, IBind<ICharacterStatus>
     {
-        private CharacterStatus _status;
+        private ICharacterStatus _status;
+
         public Text Hp;
         public Image HpFill;
 
-        public void Init(CharacterStatus status)
+        public void Bind(ICharacterStatus status)
         {
             _status = status;
             _status.OnHpChanged += SetHp;
-
             SetHp(_status.Hp);
         }
 

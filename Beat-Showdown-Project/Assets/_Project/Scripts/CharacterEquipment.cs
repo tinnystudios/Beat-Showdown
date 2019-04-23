@@ -1,22 +1,24 @@
-﻿using App.Characters.Components;
+﻿using System;
 using UnityEngine;
 
-public class CharacterEquipment : MonoBehaviour
+public class CharacterEquipment : MonoBehaviour, ICharacterEquipment
 {
-    public CharacterCombat Combat;
-    public AvatarAnchorView HandAnchor;
+    public CharacterAvatar Avatar;
 
-    private IWeaponAgent _weaponAgent; //Change this to a weapon interface soon
+    public Action<IWeaponAgent> OnEquip { get; set; }
+    public Action<IWeaponAgent> OnUnequip { get; set; }
+
+    public IWeaponAgent WeaponAgent { get; private set; }
 
     public void Equip(IWeaponAgent weaponAgent)
     {
-        if (_weaponAgent != null)
-            UnEquip(_weaponAgent);
+        if (WeaponAgent != null)
+            UnEquip(WeaponAgent);
 
-        weaponAgent.View().SetAvatar(HandAnchor);
-        _weaponAgent = weaponAgent;
+        weaponAgent.View().SetAvatar(Avatar.RightHand);
+        WeaponAgent = weaponAgent;
 
-        Combat.SetWeapon(_weaponAgent);
+        OnEquip?.Invoke(WeaponAgent);
     }
 
     public void UnEquip(IWeaponAgent itemAgent)

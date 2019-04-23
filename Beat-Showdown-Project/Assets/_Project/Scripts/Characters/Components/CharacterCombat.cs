@@ -2,40 +2,18 @@
 
 namespace App.Characters.Components
 {
-    public class CharacterCombat : MonoBehaviour
+    public class CharacterCombat : MonoBehaviour, ICharacterCombat, IBind<ICharacterEquipment>, IBind<ICharacterAnimator>
     {
-        public Animator Animator;
+        private ICharacterEquipment _equipment;
+        private ICharacterAnimator _characterAnimator;
 
-        public AnimatorOverrideController GunnerOverrideController;
-        public AnimatorOverrideController SwordsmanOverrideController;
-
-        public IWeaponAgent WeaponAgent { get; private set; }
-
-        public void SetWeapon(IWeaponAgent weapon)
-        {
-            WeaponAgent = weapon;
-            SetAnimatorUser();
-        }
+        public void Bind(ICharacterEquipment equipment) { _equipment = equipment; }
+        public void Bind(ICharacterAnimator animator) { _characterAnimator = animator; }
 
         public virtual void Attack()
         {
-            WeaponAgent?.Use();
-            Animator.SetTrigger("Attack");
-        }
-
-        public void SetAnimatorUser()
-        {
-            // #TODO The Model of a weapon type would contain its AnimatorOverrideController
-            switch (WeaponAgent.WeaponType)
-            {
-                case EWeaponType.Gun:
-                    Animator.runtimeAnimatorController = GunnerOverrideController;
-                    break;
-
-                case EWeaponType.Sword:
-                    Animator.runtimeAnimatorController = SwordsmanOverrideController;
-                    break;
-            }
+            _equipment.WeaponAgent?.Use();
+            _characterAnimator.Attack();
         }
     }
 }
