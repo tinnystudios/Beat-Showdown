@@ -1,6 +1,9 @@
 ﻿using App.Characters.Controllers;
 using UnityEngine;
 
+/// <summary>
+/// Bind all necessary to existing MonoBehaviours in the scene
+/// </summary>
 public class GameDataBinder : MonoBehaviour
 {
     public BeatMeterAgent BeatMeterAgent;
