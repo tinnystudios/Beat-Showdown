@@ -7,18 +7,17 @@ public class GameDataBinder : MonoBehaviour
 
     public void Bind()
     {
-        var beatMeterAgentDependents = GetComponentsInChildren<IBind<BeatMeterAgent>>(includeInactive: true);
-        foreach (var dependent in beatMeterAgentDependents)
-        {
-            dependent.Bind(BeatMeterAgent);
-        }
-
-        var playersDependents = GetComponentsInChildren<IBind<PlayerCharacterAgent[]>>(includeInactive: true);
         var players = GetComponentsInChildren<PlayerCharacterAgent>(includeInactive: true);
 
-        foreach (var playersDependent in playersDependents)
-        {
-            playersDependent.Bind(players);
-        }
+        Bind<IBind<BeatMeterAgent>,BeatMeterAgent>(BeatMeterAgent);
+        Bind<IBind<PlayerCharacterAgent[]>, PlayerCharacterAgent[]>(players);
+    }
+
+    public void Bind<T, TGet>(TGet dependent = null) where T : class, IBind<TGet> where TGet : class 
+    {
+        var dependencies = GetComponentsInChildren<T>(includeInactive: true);
+
+        foreach (var dependency in dependencies)
+            dependency.Bind(dependent);
     }
 }
