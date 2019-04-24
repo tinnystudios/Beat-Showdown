@@ -21,6 +21,7 @@ public class PotionAgent : ItemBaseAgent<PotionModel>
 		Model.Status.AddHp(Model.Value);
 	}
 }
+```
 
 2. Create a Model
 
