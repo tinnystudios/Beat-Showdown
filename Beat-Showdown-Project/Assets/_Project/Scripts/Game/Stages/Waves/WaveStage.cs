@@ -23,7 +23,7 @@ public class WaveStage : Stage, IBind<PlayerCharacterAgent[]>
 
         while (IsRunning)
         {
-            foreach (var agent in _players) agent.Process();
+            foreach (var agent in _players) agent.UpdateAgent();
             yield return null;
         }
     }

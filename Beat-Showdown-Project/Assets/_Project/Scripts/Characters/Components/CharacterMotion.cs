@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace App.Characters.Components
 {
-    public class CharacterMotion : MonoBehaviour, IBind<Rigidbody>
+    public class CharacterMotion : MonoBehaviour, IBind<Rigidbody>, ICharacterMotion
     {
         [SerializeField] private MotionModel _MotionModel;
         private Rigidbody _rigidBody;
@@ -22,5 +22,11 @@ namespace App.Characters.Components
 
             transform.position += direction * _MotionModel.MoveSpeed * Time.deltaTime;
         }
+    }
+
+    public interface ICharacterMotion
+    {
+        void Jump();
+        void Move(Vector3 direction);
     }
 }

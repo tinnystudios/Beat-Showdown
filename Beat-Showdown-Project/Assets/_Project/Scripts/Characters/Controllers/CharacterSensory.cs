@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace App.Characters.Controllers
 {
-    public class CharacterSensory : MonoBehaviour
+    public class CharacterSensory : MonoBehaviour, ICharacterSensory
     {
         public LayerMask SensorLayer;
         private IPickable _lastPickComponent = null;
@@ -36,5 +36,10 @@ namespace App.Characters.Controllers
 
             return null;
         }
+    }
+
+    public interface ICharacterSensory
+    {
+
     }
 }

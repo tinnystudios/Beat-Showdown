@@ -700,8 +700,8 @@ MonoBehaviour:
   Sensory: {fileID: 2202418126672317060}
   Equipment: {fileID: 302172965115177975}
   Animator: {fileID: 8312940280470977732}
-  InputConfig: {fileID: 11400000, guid: fb74ebea61005e342be167e332d6969d, type: 2}
   BeatCondition: {fileID: 11400000, guid: 6c18e86d141270c4d913e506e30f950d, type: 2}
+  InputConfig: {fileID: 11400000, guid: fb74ebea61005e342be167e332d6969d, type: 2}
 --- !u!114 &7020934506792054581
 MonoBehaviour:
   m_ObjectHideFlags: 0

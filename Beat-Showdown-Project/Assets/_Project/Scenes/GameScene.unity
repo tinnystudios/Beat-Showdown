@@ -1534,6 +1534,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: a075931703a75984f88f1cf628c6dc1d,
         type: 2}
+    - target: {fileID: 7020934506792054570, guid: 7777acba09e5c5945b2cab50b159339d,
+        type: 3}
+      propertyPath: _MotionModel
+      value: 
+      objectReference: {fileID: 11400000, guid: 00eecc8a9c031384686f442678ba2cfd,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7777acba09e5c5945b2cab50b159339d, type: 3}
 --- !u!1 &2127466757

@@ -2,7 +2,7 @@
 {
     public interface IPlayerCharacterAgent
     {
-        void Process();
+        void UpdateAgent();
         void UseItem(IItemAgent itemAgent);
     }
 }

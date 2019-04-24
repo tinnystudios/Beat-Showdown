@@ -2,6 +2,6 @@
 {
     public interface ICharacterCombat
     {
-
+        void Attack();
     }
 }

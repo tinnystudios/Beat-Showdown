@@ -6,4 +6,6 @@ public interface ICharacterEquipment
     Action<IWeaponAgent> OnUnequip { get; set; }
 
     IWeaponAgent WeaponAgent { get; }
+
+    void TryEquip(IItemAgent itemAgent);
 }

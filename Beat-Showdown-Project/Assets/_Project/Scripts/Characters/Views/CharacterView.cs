@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace App.Characters.Views
 {
-    public class CharacterView : MonoBehaviour, IBind<ICharacterStatus>
+    public class CharacterView : MonoBehaviour, IBind<ICharacterStatus>, ICharacterView
     {
         private ICharacterStatus _status;
 
@@ -28,5 +28,10 @@ namespace App.Characters.Views
         {
             _status.OnHpChanged -= SetHp;
         }
+    }
+
+    public interface ICharacterView
+    {
+
     }
 }
