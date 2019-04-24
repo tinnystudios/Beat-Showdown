@@ -1,31 +1,30 @@
-﻿using App.Characters.Models;
+﻿using App.Characters.Components;
+using App.Characters.Controllers;
+using App.Characters.Models;
 using UnityEngine;
 
-public interface IItemUser
+public class MockPlayer : MonoBehaviour
 {
-    Transform transform { get; }
-    GameObject gameObject { get; }
-}
+    public CharacterMotion Motion;
+    public CharacterSensory Sensory;
 
-public class MockPlayer : MonoBehaviour, IItemUser
-{
     public Item Item;
     public CharacterStatus Status = new CharacterStatus(3, 10);
     public AvatarAnchorView WeaponAnchor;
     public Animator Animator;
+
     private IWeapon Weapon;
-    private void Awake()
-    {
-        PickUp(Item);
-    }
 
     public void PickUp(Item item)
     {
-        ResolveItemDependencies(item);
-
         var weapon = item as IWeapon;
         if (weapon != null)
         {
+            if (Weapon != null)
+            {
+                Destroy(Weapon.Instance.gameObject);
+            }
+
             var weaponAnchorTransform = WeaponAnchor.transform;
             var weaponInstance = Instantiate(weapon.WeaponPrefab, weaponAnchorTransform.position, weaponAnchorTransform.rotation);
 
@@ -35,6 +34,8 @@ public class MockPlayer : MonoBehaviour, IItemUser
 
             Weapon = weapon;
         }
+
+        ResolveItemDependencies(item);
     }
 
     public void ResolveItemDependencies(Item item)
@@ -45,14 +46,25 @@ public class MockPlayer : MonoBehaviour, IItemUser
             (ability as IBind<IAvatarAnchor>)?.Bind(WeaponAnchor);
 
             if(Weapon != null)
-                (ability as IBind<IWeapon>)?.Bind(Weapon);
+                (ability as IBind<IShootLocation>)?.Bind(Weapon.Instance.Pivot);
         }
     }
 
     public void Update()
     {
+        var x = Input.GetAxis("Horizontal");
+        var dir = new Vector3(x, 0, 0);
+        Motion.Move(dir);
+
+        var nearestPickable = Sensory.FindNearestPickable(transform.position, transform.forward);
+
         if (Input.GetKeyUp(KeyCode.E))
-            UseItem(Item);
+        {
+            if (nearestPickable != null)
+            {
+                PickUp(nearestPickable.GetItem());
+            }
+        }
 
         if (Input.GetKeyUp(KeyCode.F))
         {

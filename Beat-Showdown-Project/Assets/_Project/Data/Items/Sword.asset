@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11b2a1b28534a864e90be172729d0b6a, type: 3}
-  m_Name: Pistol
+  m_Name: Sword
   m_EditorClassIdentifier: 
-  Name: Pistol
-  Abilities:
-  - {fileID: 11400000, guid: 841e89d09e8be6148bc1d9e20d69499d, type: 2}
-  _RuntimeAnimator: {fileID: 22100000, guid: fcb6eeb9f09d1c04b8f5e1c99b84cf88, type: 2}
-  _EquipmentPrefab: {fileID: 1923696558377063784, guid: 205805fc1840a1046a05531ae5452b1d,
+  Name: Sword
+  Abilities: []
+  _EquipmentPrefab: {fileID: 757269164067278661, guid: 6095963ebdf028843af508323da81f41,
     type: 3}
+  _RuntimeAnimator: {fileID: 22100000, guid: 31ee0b0597f0e594ebb0679fa32cfc3a, type: 2}

@@ -1,15 +1,15 @@
 ﻿using App.Items.Models;
 using UnityEngine;
 
-public class ItemAssetView : MonoBehaviour, IPickable
+public class MockItemAssetView : MonoBehaviour, IPickable
 {
-    public ItemAssetBase ItemAsset;
+    public Item Item;
     public Renderer Renderer;
 
-    public virtual IItemAssetAgent PickItem()
+    public virtual Item GetItem()
     {
         gameObject.SetActive(false);
-        return ItemAsset;
+        return Item;
     }
 
     public virtual void Select()
@@ -20,10 +20,5 @@ public class ItemAssetView : MonoBehaviour, IPickable
     public virtual void Deselect()
     {
         Renderer.material.color = Color.white;
-    }
-
-    Item IPickable.GetItem()
-    {
-        throw new System.NotImplementedException();
     }
 }

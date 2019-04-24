@@ -4,7 +4,7 @@ namespace App.Items.Models
 {
     public interface IPickable : ISelectable
     {
-        IItemAssetAgent PickItem();
+        Item GetItem();
         Transform transform { get; }
     }
 }
