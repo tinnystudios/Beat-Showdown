@@ -4,7 +4,7 @@ using App.Characters.Models;
 using UnityEngine;
 
 public class EnemyAgent : 
-    CharacterAgentBase<EnemyView, CharacterStatus, CharacterMotion, EnemyCombat, EnemySensory, CharacterEquipment, EnemyAnimator>,
+    CharacterAgentBase<EnemyView, CharacterStatus, CharacterMotion, EnemyCombat, EnemySensory, EnemyEquipment, EnemyAnimator>,
     IBind<BeatMeterAgent>
 {
     public void Bind(BeatMeterAgent beatMeter)

@@ -1,9 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
-public class CharacterEquipment : MonoBehaviour, IBind<IPickableAgent>, ICharacterEquipment
+public class CharacterEquipment<T> : MonoBehaviour, IBind<IPickableAgent>, ICharacterEquipment where T : ICharacterAvatar
 {
-    public CharacterAvatar Avatar;
+    public T Avatar;
 
     public Action<IWeaponAgent> OnEquip { get; set; }
     public Action<IWeaponAgent> OnUnequip { get; set; }
@@ -24,7 +24,7 @@ public class CharacterEquipment : MonoBehaviour, IBind<IPickableAgent>, ICharact
         if (WeaponAgent != null)
             UnEquip(WeaponAgent);
 
-        weaponAgent.View().SetAvatar(Avatar.RightHand);
+        weaponAgent.View().SetAvatar(Avatar.PrimaryWeapon);
         WeaponAgent = weaponAgent;
 
         OnEquip?.Invoke(WeaponAgent);

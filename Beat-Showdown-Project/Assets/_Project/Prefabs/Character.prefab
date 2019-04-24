@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 3551569149579162833}
   - component: {fileID: 7020934506792054581}
   - component: {fileID: 8312940280470977732}
-  - component: {fileID: 302172965115177975}
+  - component: {fileID: 4349910391930879558}
   - component: {fileID: 7020934506792054570}
   - component: {fileID: 2202418126672317060}
   - component: {fileID: 7020934506792054571}
@@ -459,7 +459,7 @@ MonoBehaviour:
   Motion: {fileID: 7020934506792054570}
   Combat: {fileID: 7020934506792054571}
   Sensory: {fileID: 2202418126672317060}
-  Equipment: {fileID: 302172965115177975}
+  Equipment: {fileID: 4349910391930879558}
   Animator: {fileID: 8312940280470977732}
   BeatCondition: {fileID: 11400000, guid: 6c18e86d141270c4d913e506e30f950d, type: 2}
   BeatConstraints:
@@ -499,7 +499,7 @@ MonoBehaviour:
     type: 2}
   SwordsmanOverrideController: {fileID: 22100000, guid: 31ee0b0597f0e594ebb0679fa32cfc3a,
     type: 2}
---- !u!114 &302172965115177975
+--- !u!114 &4349910391930879558
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -508,7 +508,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7020934506792054574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9630f8c1089307148827a795a142f4e1, type: 3}
+  m_Script: {fileID: 11500000, guid: d65527ed23aa01c4fb9c245565d6c114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Avatar:

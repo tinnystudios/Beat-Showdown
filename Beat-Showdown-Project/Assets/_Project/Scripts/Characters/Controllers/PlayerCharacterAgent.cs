@@ -13,7 +13,7 @@ namespace App.Characters.Controllers
         CharacterMotion,
         CharacterCombat,
         CharacterSensory,
-        CharacterEquipment,
+        HumanCharacterEquipment,
         CharacterAnimator>,
         IPlayerCharacterAgent
     {
