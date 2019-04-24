@@ -13,7 +13,7 @@ Items are structured using MVC with an addition of Scriptable Objects refered to
 ### Usage
 ```
 
-// To pick up an item, we pick need to receive the IItemAssetAgent which is a Scriptable Object 
+// To pick up an item, we need to receive the IItemAssetAgent from User Input
 public void PickUp(IItemAssetAgent itemAssetAgent)
 {
     // This allows us to create an agent with the correct type without knowing the type
