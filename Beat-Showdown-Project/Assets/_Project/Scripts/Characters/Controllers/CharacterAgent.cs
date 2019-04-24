@@ -55,14 +55,14 @@ namespace App.Characters.Controllers
             }
         }
 
-        public virtual void UseItem(IItemAgent itemAgent)
+        public virtual void UseItem(Item item)
         {
-            itemAgent.Use();
+            item.Use();
         }
 
-        public T GetInterface<T>(IItemAgent itemAgent) where T : class
+        public T GetInterface<T>(Item item) where T : class
         {
-            return itemAgent as T;
+            return item as T;
         }
 
         protected virtual void BindCharacterComponents()
@@ -75,7 +75,7 @@ namespace App.Characters.Controllers
             this.Bind<IBind<ICharacterStatus>, ICharacterStatus>(Status);
         }
 
-        public virtual void BindItem(IItemAgent itemAgent)
+        public virtual void BindItem(Item itemAgent)
         {
             GetInterface<IBind<ICharacterStatus>>(itemAgent)?.Bind(Status);
             GetInterface<IBind<ICharacterCombat>>(itemAgent)?.Bind(Combat);

@@ -22,6 +22,7 @@ public class CharacterEquipment<T> : MonoBehaviour, IBind<IPickableAgent>, IChar
         }
     }
 
+    // These are dependencies that need to Bind after the object is made
     public void BindDependencies(Item item, IWeapon weapon)
     {
         foreach (var ability in item.Abilities)

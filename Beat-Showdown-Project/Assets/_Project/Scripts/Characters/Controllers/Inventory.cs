@@ -2,14 +2,14 @@
 
 public class Inventory
 {
-    public List<IItemAgent> Items = new List<IItemAgent>();
+    public List<Item> Items = new List<Item>();
 
     public Inventory()
     {
 
     }
 
-    public void Add(IItemAgent item)
+    public void Add(Item item)
     {
         Items.Add(item);
     }

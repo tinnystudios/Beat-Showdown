@@ -6,7 +6,7 @@ namespace App.Characters.Controllers
     {
         void Init();
         void UpdateAgent();
-        void UseItem(IItemAgent itemAgent);
+        void UseItem(Item item);
 
         Transform transform { get; }
     }
