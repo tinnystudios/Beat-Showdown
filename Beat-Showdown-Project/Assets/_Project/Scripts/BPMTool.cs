@@ -68,6 +68,8 @@ public class BPMTool : MonoBehaviour
     {
         if (!IsRunning) return;
 
+        _songSource.pitch = Speed;
+
         SongPos = _songSource.time;
         SongPosInBeats = SongPos / SecPerBeat;
 

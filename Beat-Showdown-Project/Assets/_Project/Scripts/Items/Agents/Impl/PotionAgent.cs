@@ -2,9 +2,9 @@
 
 namespace Assets._Project.Scripts.Items
 {
-    public class PotionAgent : ItemBaseAgent<PotionModel>, IBind<CharacterStatus>, IConsumableAgent
+    public class PotionAgent : ItemBaseAgent<PotionModel>, IBind<ICharacterStatus>, IConsumableAgent
     {
-        private CharacterStatus _status;
+        private ICharacterStatus _status;
 
         public PotionAgent(PotionModel model) : base(model)
         {
@@ -22,7 +22,7 @@ namespace Assets._Project.Scripts.Items
             _status.AddHp(Model.Hp);
         }
 
-        public void Bind(CharacterStatus status)
+        public void Bind(ICharacterStatus status)
         {
             _status = status;
         }

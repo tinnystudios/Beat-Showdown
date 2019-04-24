@@ -13,7 +13,7 @@ public class BeatPlayerAgent : PlayerCharacterAgent, IBind<BeatMeterAgent>
 
     public IPickable ClosestPickable { get; private set; }
 
-    public void Bind(BeatMeterAgent beatMeterAgent) { BeatCondition.Bind(beatMeterAgent); }
+    public void Bind(BeatMeterAgent beatMeterAgent) { BeatCondition?.Bind(beatMeterAgent); }
 
     public override void MapInputToActions()
     {
@@ -24,28 +24,31 @@ public class BeatPlayerAgent : PlayerCharacterAgent, IBind<BeatMeterAgent>
         InputConfig.PickUpAction.performed += context => PickUp();
     }
 
+    public bool Pass => BeatCondition != null ? BeatCondition.Pass : true;
+
     public void Move(Vector2 delta)
     {
-        if (!BeatCondition.Pass) return;
+        if (!Pass) return;
+
         var dir = new Vector3(delta.x, 0, delta.y);
         Motion.Move(dir);
     }
 
     public void Attack()
     {
-        if (!BeatCondition.Pass) return;
+        if (!Pass) return;
         Combat.Attack();
     }
 
     public void Jump()
     {
-        if (!BeatCondition.Pass) return;
+        if (!Pass) return;
         Motion.Jump();
     }
 
     public void PickUp()
     {
-        if (!BeatCondition.Pass) return;
+        if (!Pass) return;
 
         if (ClosestPickable != null)
             PickUp(ClosestPickable.PickItem());
