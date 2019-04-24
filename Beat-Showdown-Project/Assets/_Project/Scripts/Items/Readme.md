@@ -1,17 +1,18 @@
-##Items
+## Items
 
 ### Breakdown:
 
-Items are structured using MVC with an addition of Asset and 
+Items are structured using MVC with an addition of Scriptable Objects refered to as Asset.
 
-*Agent:* Actions, such as firing a bullet
-*Model:* Containing the data, such as the bullet to fire and the force
-*Asset:* Contains the Model and creates an Agent with the correct model. The Asset is what the Designer will be editting
-in Unity Editor Inspector window to change the power of a gun
-*ItemSceneView* A View for the item in the scene
+**Agent:** Actions, such as firing a bullet.
+
+**Model:** Containing the data, such as the bullet to fire and the force
+
+**Asset:** A Scriptable Object containing the Model and creates an Agent with the correct model. Can be configure in the editor.
 
 ### Creating a brand new item
 1. Create an Agent
+
 ```
 public class PotionAgent : ItemBaseAgent<PotionModel>
 {
@@ -22,6 +23,7 @@ public class PotionAgent : ItemBaseAgent<PotionModel>
 }
 
 2. Create a Model
+
 ```
 [System.Serializble]
 public class PotionModel : IBind<ICharacterStatus>
@@ -38,8 +40,9 @@ public class PotionModel : IBind<ICharacterStatus>
 }
 ```
 
-3. Finally a way to see it, Create an Asset
+3. Finally a way to see it, Create an Asset.
 This asset is a Scriptable Object in the Editor, giving access to edit the PotionModel
+
 ```
 [CreateAssetMenu]
 public class PotionAsset : ItemAssetBase<PotionModel>
@@ -50,12 +53,14 @@ public class PotionAsset : ItemAssetBase<PotionModel>
     }
 }
 ``` 
-4. Right click in the Project view, *Create > PotionAsset* and configure it. You're Done!
+
+4. Right click in the Project view, `Create > PotionAsset` and configure it. You're Done!
 
 ### Creating a new weapon
 Creating a new weapon is slightly different as there are already base classes for it. You can still use the system above to create your own.
 
 1. Create an Agent implementing IItemAgent<TModel> where TModel is the Model relating to your Agent
+
 ```
 public class GunAgent : EquipmentBaseAgent<GunModel>, IWeaponAgent
 {
@@ -64,20 +69,25 @@ public class GunAgent : EquipmentBaseAgent<GunModel>, IWeaponAgent
 		var bullet = Instantiate(Model.Bullet);
 		bullet.Fire(Model.Power);
 	}
-}```
+}
+```
+
 2. Create a Model implementing EquipmentBaseModel and IWeaponModel
+
 ```
 [System.Serializble]
 public class GunModel : EquipmentBaseModel, IWeaponModel
 {
 	public BulletComponent Bullet;
 	public float Power = 10;
-}```
+}
+```
 
 The View for the items do not need to be created, however to take advantage of Scriptable Objects in Unity
 we do have 1 more major step.
 
 3. Create a Scriptable Asset implementing ItemAssetBase<TModel> where TModel is the Model for the GunAgent
+
 ```
 [CreateAssetMenu]
 public class GunAsset : ItemAssetBase<SwordModel>
@@ -90,5 +100,5 @@ public class GunAsset : ItemAssetBase<SwordModel>
 
 A Weapon need to be picked up and used. The next step will allow it.
 
-4. Right click in the Project view, *Create > PotionAsset* and configure it.
-4. Create a GameObject and attach the *ItemSceneView* component on it and select your Item asset.
+4. Right click in the Project view, `Create > GunAsset` and configure it.
+4. Create a GameObject and attach the `ItemSceneView` component on it and select your Item asset.
