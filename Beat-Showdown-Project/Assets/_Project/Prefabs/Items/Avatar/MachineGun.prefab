@@ -209,7 +209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6042258206494370318}
-  - component: {fileID: 8663343089384559945}
+  - component: {fileID: 5370023783835068554}
   m_Layer: 0
   m_Name: MachineGun
   m_TagString: Untagged
@@ -232,7 +232,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8663343089384559945
+--- !u!114 &5370023783835068554
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,6 +241,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6466848387632822397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12ac7ca1507660941ac81ebfdd4b016f, type: 3}
+  m_Script: {fileID: 11500000, guid: cb4b3726b04c5474d9dc4b8358398a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

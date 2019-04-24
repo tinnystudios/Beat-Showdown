@@ -42,11 +42,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 901717938701286160}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1622d09e6b3f18c44a738bebdae86161, type: 3}
+  m_Script: {fileID: 11500000, guid: 0dff1c3827c41f3418bd86e198315559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ItemAsset: {fileID: 11400000, guid: 559981aff9ac48445a94d1bc193517f6, type: 2}
-  Renderer: {fileID: 8342013840514551492}
+  Renderer: {fileID: 9050733878210937667}
 --- !u!1 &8614800981625104332
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,11 +107,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3378429016746429362}
     m_Modifications:
-    - target: {fileID: 570532690077563030, guid: 205805fc1840a1046a05531ae5452b1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Pistol
-      objectReference: {fileID: 0}
     - target: {fileID: 382325204867622145, guid: 205805fc1840a1046a05531ae5452b1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -167,6 +162,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 570532690077563030, guid: 205805fc1840a1046a05531ae5452b1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Pistol
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 205805fc1840a1046a05531ae5452b1d, type: 3}
 --- !u!4 &1201997523406058503 stripped
@@ -175,9 +175,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1576278417451798790}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &8342013840514551492 stripped
+--- !u!23 &9050733878210937667 stripped
 MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 7360247098280206274, guid: 205805fc1840a1046a05531ae5452b1d,
+  m_CorrespondingSourceObject: {fileID: 7528534635229155909, guid: 205805fc1840a1046a05531ae5452b1d,
     type: 3}
   m_PrefabInstance: {fileID: 1576278417451798790}
   m_PrefabAsset: {fileID: 0}

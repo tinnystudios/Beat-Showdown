@@ -1,4 +1,4 @@
-﻿public abstract class EquipmentBaseModel<T> where T : ItemBaseView
+﻿public abstract class EquipmentBaseModel
 {
-    public T Prefab;
+    public ItemSceneView Prefab;
 }

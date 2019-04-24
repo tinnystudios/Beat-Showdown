@@ -3,7 +3,7 @@
 /// <summary>
 /// A view for Unity Item Views
 /// </summary>
-public class ItemBaseView : MonoBehaviour, IItemView
+public class ItemSceneView : MonoBehaviour, IItemView
 {
     public void Exit()
     {

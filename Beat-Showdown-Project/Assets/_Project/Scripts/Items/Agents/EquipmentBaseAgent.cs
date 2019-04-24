@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 
-public abstract class EquipmentBaseAgent<TModel, TView> : ItemBaseAgent<TModel> where TModel : EquipmentBaseModel<TView> where TView : ItemBaseView
+/// <summary>
+/// Implement this class to create an ItemAvatar
+/// </summary>
+public abstract class EquipmentBaseAgent<TModel> : ItemBaseAgent<TModel> where TModel : EquipmentBaseModel
 {
     protected IItemView _view;
 
-    public EquipmentBaseAgent(TModel model) : base(model)
+    protected EquipmentBaseAgent(TModel model) : base(model)
     {
 
     }
 
+    // Instantiate the Scene Item from Model.Prefab
     public override IItemView View()
     {
         if (_view == null)

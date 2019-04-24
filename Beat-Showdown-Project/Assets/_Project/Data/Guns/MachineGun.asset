@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MachineGun
   m_EditorClassIdentifier: 
   Model:
-    Prefab: {fileID: 8663343089384559945, guid: ca5d3ac9de0c30e46b0db2f4c209cc53,
+    Prefab: {fileID: 5370023783835068554, guid: ca5d3ac9de0c30e46b0db2f4c209cc53,
       type: 3}
     Power: 10
     BulletPrefab: {fileID: 8236978864216961225, guid: 2090c8eb602cb6a46879cedf60d8b544,

@@ -1,9 +1,9 @@
 ﻿using App.Items.Models;
 using UnityEngine;
 
-public abstract class ItemAssetView<T> : MonoBehaviour, IPickable where T : IItemAssetAgent
+public class ItemAssetView : MonoBehaviour, IPickable
 {
-    public T ItemAsset;
+    public ItemAssetBase ItemAsset;
     public Renderer Renderer;
 
     public virtual IItemAssetAgent PickItem()

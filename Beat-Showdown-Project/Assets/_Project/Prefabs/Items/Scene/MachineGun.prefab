@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135708917}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.63, y: -0.4458799, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -42,7 +42,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1135708917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1622d09e6b3f18c44a738bebdae86161, type: 3}
+  m_Script: {fileID: 11500000, guid: 0dff1c3827c41f3418bd86e198315559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ItemAsset: {fileID: 11400000, guid: 2e86782634f3d3441a69092326c19333, type: 2}
@@ -107,11 +107,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 245561549}
     m_Modifications:
-    - target: {fileID: 6466848387632822397, guid: ca5d3ac9de0c30e46b0db2f4c209cc53,
-        type: 3}
-      propertyPath: m_Name
-      value: MachineGun
-      objectReference: {fileID: 0}
     - target: {fileID: 6042258206494370318, guid: ca5d3ac9de0c30e46b0db2f4c209cc53,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -166,6 +161,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466848387632822397, guid: ca5d3ac9de0c30e46b0db2f4c209cc53,
+        type: 3}
+      propertyPath: m_Name
+      value: MachineGun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5d3ac9de0c30e46b0db2f4c209cc53, type: 3}

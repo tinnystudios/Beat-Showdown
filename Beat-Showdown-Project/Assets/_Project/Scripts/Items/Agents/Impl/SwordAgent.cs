@@ -1,15 +1,11 @@
 ﻿using App.Characters.Components;
 
-public class SwordAgent : EquipmentBaseAgent<SwordModel, SwordView>, IWeaponAgent, IBind<CharacterCombat>
+public class SwordAgent : EquipmentBaseAgent<SwordModel>, IWeaponAgent, IBind<CharacterCombat>
 {
     private CharacterCombat _characterCombat = null;
-
-    public SwordAgent(SwordModel model) : base(model)
-    {
-
-    }
-
     public EWeaponType WeaponType => EWeaponType.Sword;
+
+    public SwordAgent(SwordModel model) : base(model) { }
 
     public void Bind(CharacterCombat characterCombat)
     {
