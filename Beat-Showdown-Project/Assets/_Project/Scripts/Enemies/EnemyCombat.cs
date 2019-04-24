@@ -1,28 +1,29 @@
 ﻿using App.Characters.Components;
 using UnityEngine;
 
-public class EnemyCombat : MonoBehaviour, ICharacterCombat, IBind<ICharacterAnimator>
+public class EnemyCombat : MonoBehaviour, ICharacterCombat, IBind<ICharacterAnimator>, IBind<ICharacterEquipment>
 {
-    public ItemAssetBase Weapon;
+    public Item Weapon;
     public AnimatorOverrideController AnimatorOverride;
 
     public AvatarAnchorView Anchor;
 
     private ICharacterAnimator _animator;
-    private IItemAgent _weaponAgent;
+    private ICharacterEquipment _equipment;
+
+    public void Bind(ICharacterEquipment equipment) { _equipment = equipment; }
 
     public void Bind(ICharacterAnimator animator)
     {
         _animator = animator;
         _animator.Animator.runtimeAnimatorController = AnimatorOverride;
 
-        _weaponAgent = Weapon.CreateAgent();
-        _weaponAgent.View().SetAvatar(Anchor);
+        _equipment.TryEquip(Weapon);
     }
 
     public void Attack()
     {
-        _weaponAgent.Use();
+        _equipment.WeaponAgent.Attack();
         _animator.Attack();
     }
 }

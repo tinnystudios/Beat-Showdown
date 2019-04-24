@@ -12,7 +12,7 @@ namespace App.Characters.Components
 
         public virtual void Attack()
         {
-            _equipment.WeaponAgent?.Use();
+            _equipment.WeaponAgent?.Attack();
             _characterAnimator.Attack();
         }
     }

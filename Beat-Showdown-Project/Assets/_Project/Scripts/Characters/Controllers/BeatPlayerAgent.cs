@@ -54,7 +54,7 @@ public class BeatPlayerAgent : PlayerCharacterAgent, IBind<BeatMeterAgent>
         if (BeatConstraints.PickUp && !Pass) return;
 
         if (ClosestPickable != null)
-            PickUp(ClosestPickable.PickItem());
+            PickUp(ClosestPickable.GetItem());
     }
 
     public override void UpdateAgent()
