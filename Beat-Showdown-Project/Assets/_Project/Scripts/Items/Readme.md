@@ -10,6 +10,32 @@ Items are structured using MVC with an addition of Scriptable Objects refered to
 
 **Asset:** A Scriptable Object containing the Model and creates an Agent with the correct model. Can be configure in the editor.
 
+### Usage
+```
+
+// To pick up an item, we pick need to receive the IItemAssetAgent which is a Scriptable Object 
+public void PickUp(IItemAssetAgent itemAssetAgent)
+{
+    // This allows us to create an agent with the correct type without knowing the type
+    var itemAgent = itemAssetAgent.CreateAgent();
+    
+    BindItem(itemAgent);
+    UseItem(itemAgent);
+}
+
+// Usage of an item can be acess through the IItemAgent interface
+public void UseItem(IItemAgent itemAgent)
+{
+	itemAgent.Use();
+}
+
+// Binding any data an item interface depends on, this is Unique to your game
+public void BindItem(IItemAgent itemAgent)
+{
+	GetInterface<IBind<ICharacterStatus>>?.Bind(Status);
+}
+```
+
 ### Creating a brand new item
 1. Create an Agent
 
