@@ -12,17 +12,21 @@ public class CharacterEquipment<T> : MonoBehaviour, IBind<IPickableAgent>, IChar
 
     public void Bind(IPickableAgent pickableAgent) { pickableAgent.OnPickUp += TryEquip; }
 
-    public void TryEquip(Item itemAgent)
+    public void TryEquip(Item item)
     {
-        var weapon = itemAgent as IWeapon;
+        var weapon = item as IWeapon;
         if (weapon != null)
         {
             Equip(weapon);
+            BindDependencies(item, weapon);
+        }
+    }
 
-            foreach (var ability in itemAgent.Abilities)
-            {
-                (ability as IBind<IShootLocation>)?.Bind(weapon.Instance.Pivot);
-            }
+    public void BindDependencies(Item item, IWeapon weapon)
+    {
+        foreach (var ability in item.Abilities)
+        {
+            (ability as IBind<IShootLocation>)?.Bind(weapon.Instance.Pivot);
         }
     }
 

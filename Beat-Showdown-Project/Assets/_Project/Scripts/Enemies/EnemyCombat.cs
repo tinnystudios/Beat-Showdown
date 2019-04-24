@@ -11,6 +11,8 @@ public class EnemyCombat : MonoBehaviour, ICharacterCombat, IBind<ICharacterAnim
     private ICharacterAnimator _animator;
     private ICharacterEquipment _equipment;
 
+    public void Bind(ICharacterEquipment equipment) { _equipment = equipment; }
+
     public void Bind(ICharacterAnimator animator)
     {
         _animator = animator;
@@ -23,10 +25,5 @@ public class EnemyCombat : MonoBehaviour, ICharacterCombat, IBind<ICharacterAnim
     {
         _equipment.WeaponAgent.Attack();
         _animator.Attack();
-    }
-
-    public void Bind(ICharacterEquipment equipment)
-    {
-        _equipment = equipment;
     }
 }
