@@ -10,20 +10,9 @@ public class GameDataBinder : MonoBehaviour
 
     public void Bind()
     {
-        var players = GetComponentsInChildren<PlayerCharacterAgent>(includeInactive: true);
+        var players = GetComponentsInChildren<IPlayerCharacterAgent>(includeInactive: true);
 
         this.Bind<IBind<BeatMeterAgent>,BeatMeterAgent>(BeatMeterAgent);
-        this.Bind<IBind<PlayerCharacterAgent[]>, PlayerCharacterAgent[]>(players);
-    }
-}
-
-public static class DataBinderExtensions
-{
-    public static void Bind<T, TGet>(this MonoBehaviour mono, TGet dependent = null) where T : class, IBind<TGet> where TGet : class
-    {
-        var dependencies = mono.GetComponentsInChildren<T>(includeInactive: true);
-
-        foreach (var dependency in dependencies)
-            dependency.Bind(dependent);
+        this.Bind<IBind<IPlayerCharacterAgent[]>, IPlayerCharacterAgent[]>(players);
     }
 }

@@ -1,7 +1,6 @@
 ﻿using App.Characters.Components;
 using App.Characters.Models;
 using App.Characters.Views;
-using App.Items.Models;
 using System;
 using UnityEngine;
 
@@ -39,16 +38,6 @@ namespace App.Characters.Controllers
             BindCharacterComponents();
         }
 
-        protected virtual void BindCharacterComponents()
-        {
-            this.Bind<IBind<ICharacterCombat>, ICharacterCombat>(Combat);
-            this.Bind<IBind<ICharacterEquipment>, ICharacterEquipment>(Equipment);
-            this.Bind<IBind<ICharacterAnimator>, ICharacterAnimator>(Animator);
-            this.Bind<IBind<ICharacterAgent>, ICharacterAgent>(this);
-            this.Bind<IBind<Rigidbody>, Rigidbody>(GetComponent<Rigidbody>());
-            this.Bind<IBind<ICharacterStatus>, ICharacterStatus>(Status);
-        }
-
         public virtual void PickUp(IItemAssetAgent itemAssetAgent)
         {
             var itemAgent = itemAssetAgent.CreateAgent();
@@ -64,15 +53,25 @@ namespace App.Characters.Controllers
             itemAgent.Use();
         }
 
+        public T GetInterface<T>(IItemAgent itemAgent) where T : class
+        {
+            return itemAgent as T;
+        }
+
+        protected virtual void BindCharacterComponents()
+        {
+            this.Bind<IBind<ICharacterCombat>, ICharacterCombat>(Combat);
+            this.Bind<IBind<ICharacterEquipment>, ICharacterEquipment>(Equipment);
+            this.Bind<IBind<ICharacterAnimator>, ICharacterAnimator>(Animator);
+            this.Bind<IBind<ICharacterAgent>, ICharacterAgent>(this);
+            this.Bind<IBind<Rigidbody>, Rigidbody>(GetComponent<Rigidbody>());
+            this.Bind<IBind<ICharacterStatus>, ICharacterStatus>(Status);
+        }
+
         public virtual void BindItem(IItemAgent itemAgent)
         {
             GetInterface<IBind<ICharacterStatus>>(itemAgent)?.Bind(Status);
             GetInterface<IBind<ICharacterCombat>>(itemAgent)?.Bind(Combat);
-        }
-
-        public T GetInterface<T>(IItemAgent itemAgent) where T : class
-        {
-            return itemAgent as T;
         }
     }
 }
