@@ -1,4 +1,5 @@
 ﻿using App.Characters.Controllers;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -10,9 +11,11 @@ public class GameDataBinder : MonoBehaviour
 
     public void Bind()
     {
-        var players = GetComponentsInChildren<IPlayerCharacterAgent>(includeInactive: true);
+        var players = GetComponentsInChildren<IPlayerCharacterAgent>();
+        var enemies = GetComponentsInChildren<EnemyAgent>(includeInactive: true);
 
         this.Bind<IBind<BeatMeterAgent>,BeatMeterAgent>(BeatMeterAgent);
         this.Bind<IBind<IPlayerCharacterAgent[]>, IPlayerCharacterAgent[]>(players);
+        this.Bind<IBind<EnemyAgent[]>, EnemyAgent[]>(enemies);
     }
 }

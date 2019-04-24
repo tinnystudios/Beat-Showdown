@@ -8,6 +8,7 @@ namespace App.Characters.Controllers
 {
     /// <summary>
     /// A base for any characters cabable of Motion, Combat, Sensory, Equipment and Animator
+    /// Alternatively, you can implement ICharacterAgent and IPickable
     /// </summary>
     [RequireComponent(typeof(Rigidbody))]
     public abstract class CharacterAgentBase<TView, TStatus, TMotion, TCombat, TSensory, TEquipment, TAnimator> : MonoBehaviour, 

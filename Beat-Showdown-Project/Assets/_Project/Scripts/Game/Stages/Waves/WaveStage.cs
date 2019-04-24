@@ -6,9 +6,11 @@ using UnityEngine;
 /// <summary>
 /// Run all waves from WaveStageModel
 /// </summary>
-public class WaveStage : Stage, IBind<IPlayerCharacterAgent[]>
+public class WaveStage : Stage, IBind<IPlayerCharacterAgent[]>, IBind<EnemyAgent[]>
 {
     private IPlayerCharacterAgent[] _players;
+    private EnemyAgent[] _enemyAgents;
+
     public WaveStageModel Model;
 
     public override Coroutine Run()
@@ -31,10 +33,9 @@ public class WaveStage : Stage, IBind<IPlayerCharacterAgent[]>
     private void Init()
     {
         foreach (var agent in _players) agent.Init();
+        foreach (var agent in _enemyAgents) agent.Init();
     }
 
-    public void Bind(IPlayerCharacterAgent[] players)
-    {
-        _players = players;
-    }
+    public void Bind(IPlayerCharacterAgent[] players) { _players = players; }
+    public void Bind(EnemyAgent[] agents) { _enemyAgents = agents; }
 }

@@ -6,6 +6,5 @@ namespace App.Characters.Components
     {
         Animator Animator { get; }
         void Attack();
-        void ChangeWeapon(IWeaponAgent weaponAgent);
     }
 }

@@ -1,4 +1,5 @@
-﻿using App.Characters.Models;
+﻿using System;
+using App.Characters.Models;
 using UnityEngine;
 
 namespace App.Characters.Components
@@ -17,10 +18,15 @@ namespace App.Characters.Components
 
         public virtual void Move(Vector3 direction)
         {
-            if(direction.magnitude != 0)
-                transform.rotation = Quaternion.LookRotation(direction);
+            if (direction.magnitude != 0)
+                LookAt(direction);
 
             transform.position += direction * _MotionModel.MoveSpeed * Time.deltaTime;
+        }
+
+        public virtual void LookAt(Vector3 dir)
+        {
+            transform.rotation = Quaternion.LookRotation(dir);
         }
     }
 }

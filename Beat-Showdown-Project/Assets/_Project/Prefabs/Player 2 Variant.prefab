@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 7020934506792054574, guid: 7777acba09e5c5945b2cab50b159339d,
         type: 3}
       propertyPath: m_Name
-      value: Player 2 Variant
+      value: Player 2
       objectReference: {fileID: 0}
     - target: {fileID: 7020934506792054569, guid: 7777acba09e5c5945b2cab50b159339d,
         type: 3}
@@ -65,6 +65,11 @@ PrefabInstance:
     - target: {fileID: 7020934506792054569, guid: 7777acba09e5c5945b2cab50b159339d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3551569149579162833, guid: 7777acba09e5c5945b2cab50b159339d,
+        type: 3}
+      propertyPath: BeatConstraints.Move
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3551569149579162833, guid: 7777acba09e5c5945b2cab50b159339d,
