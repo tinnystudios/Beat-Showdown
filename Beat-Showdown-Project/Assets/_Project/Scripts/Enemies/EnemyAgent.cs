@@ -7,14 +7,12 @@ public class EnemyAgent :
     CharacterAgentBase<EnemyView, CharacterStatus, CharacterMotion, EnemyCombat, EnemySensory, CharacterEquipment, EnemyAnimator>,
     IBind<BeatMeterAgent>
 {
-    public float StopRange = 2;
-
     public void Bind(BeatMeterAgent beatMeter)
     {
-        beatMeter.BPMTool.OnBeat += cont => Move();
+        beatMeter.BPMTool.OnBeat += cont => Run();
     }
 
-    public void Move()
+    public void Run()
     {
         var player = Sensory.NearestPlayer().transform;
 
@@ -23,17 +21,13 @@ public class EnemyAgent :
 
         var dist = Vector3.Distance(player.position, transform.position);
 
-        if (dist >= StopRange)
-            Motion.Move(dirToPlayer * 5);
-        else
+        if (dist >= Sensory.StopRange)
+            Motion.Move(dirToPlayer);
+
+        if(dist <= Sensory.AttackRange)
         {
             Motion.LookAt(dirToPlayer);
             Combat.Attack();
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, StopRange);
     }
 }

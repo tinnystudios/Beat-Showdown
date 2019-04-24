@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 3208300329115427210}
   - component: {fileID: 536763722080022446}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: HumanEnemyTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,6 @@ MonoBehaviour:
   Sensory: {fileID: 3208300329115427210}
   Equipment: {fileID: 6105947311277946347}
   Animator: {fileID: 7813330482103075258}
-  StopRange: 3
 --- !u!114 &4445112886574895058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weapon: {fileID: 11400000, guid: cc50b70557132aa45b14a1bd24f2b1f9, type: 2}
+  AnimatorOverride: {fileID: 22100000, guid: 31ee0b0597f0e594ebb0679fa32cfc3a, type: 2}
   Anchor: {fileID: 5817555084485050774}
 --- !u!114 &6802311046469024779
 MonoBehaviour:
@@ -138,6 +138,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae2edb0e97636594793319d78f045760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FollowRange: 20
+  StopRange: 2.5
+  AttackRange: 3
 --- !u!54 &536763722080022446
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -152,7 +155,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!1001 &6240372399185385983
 PrefabInstance:
