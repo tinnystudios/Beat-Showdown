@@ -63,6 +63,7 @@ Creating a weapon will introduce two new concepts.
 1. EquipmentBaseAgent<TModel> : Returns a View which instantiates a Prefab for the Equipment
 2. EquipmentBaseModel : Contains prefab of type ItemSceneView
 
+#### Let's Make the Weapon
 1. Create an Agent implementing EquipmentBaseAgent<TModel> where TModel is the Model relating to your Agent
 
 ```
