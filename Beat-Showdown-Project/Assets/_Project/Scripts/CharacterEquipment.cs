@@ -5,33 +5,45 @@ public class CharacterEquipment<T> : MonoBehaviour, IBind<IPickableAgent>, IChar
 {
     public T Avatar;
 
-    public Action<IWeaponAgent> OnEquip { get; set; }
-    public Action<IWeaponAgent> OnUnequip { get; set; }
+    public Action<IWeapon> OnEquip { get; set; }
+    public Action<IWeapon> OnUnequip { get; set; }
 
-    public IWeaponAgent WeaponAgent { get; private set; }
+    public IWeapon WeaponAgent { get; private set; }
 
     public void Bind(IPickableAgent pickableAgent) { pickableAgent.OnPickUp += TryEquip; }
 
-    public void TryEquip(IItemAgent itemAgent)
+    public void TryEquip(Item itemAgent)
     {
-        var weapon = itemAgent as IWeaponAgent;
+        var weapon = itemAgent as IWeapon;
         if (weapon != null)
+        {
             Equip(weapon);
+
+            foreach (var ability in itemAgent.Abilities)
+            {
+                (ability as IBind<IShootLocation>)?.Bind(weapon.Instance.Pivot);
+            }
+        }
     }
 
-    public void Equip(IWeaponAgent weaponAgent)
+    public void Equip(IWeapon weapon)
     {
         if (WeaponAgent != null)
             UnEquip(WeaponAgent);
 
-        weaponAgent.View().SetAvatar(Avatar.PrimaryWeapon);
-        WeaponAgent = weaponAgent;
+        var weaponAnchorTransform = Avatar.PrimaryWeapon.transform;
+        var weaponInstance = Instantiate(weapon.WeaponPrefab, weaponAnchorTransform.position, weaponAnchorTransform.rotation);
 
+        weaponInstance.transform.SetParent(weaponAnchorTransform);
+        weapon.Instance = weaponInstance;
+
+        WeaponAgent = weapon;
+        
         OnEquip?.Invoke(WeaponAgent);
     }
 
-    public void UnEquip(IWeaponAgent itemAgent)
+    public void UnEquip(IWeapon weapon)
     {
-        itemAgent.View().Exit();
+        Destroy(weapon.Instance.gameObject);
     }
 }

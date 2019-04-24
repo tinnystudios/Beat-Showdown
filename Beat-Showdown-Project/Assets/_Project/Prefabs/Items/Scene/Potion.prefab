@@ -100,7 +100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1368946625854991213}
-  - component: {fileID: 3503348948161420238}
+  - component: {fileID: 4218615439490809656}
   m_Layer: 9
   m_Name: Potion
   m_TagString: Untagged
@@ -123,7 +123,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3503348948161420238
+--- !u!114 &4218615439490809656
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,8 +132,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3503348948161420239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dff1c3827c41f3418bd86e198315559, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f84b3c17819017468fea79dea87edc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemAsset: {fileID: 11400000, guid: 9dd2a33fa0a187d45af160176458ffea, type: 2}
+  Item: {fileID: 11400000, guid: 50c0aad5147306647862e6b738928b1c, type: 2}
   Renderer: {fileID: 5342640442983092745}

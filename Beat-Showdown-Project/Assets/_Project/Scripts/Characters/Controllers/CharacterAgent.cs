@@ -32,21 +32,27 @@ namespace App.Characters.Controllers
         public TEquipment Equipment;
         public TAnimator Animator;
 
-        public Action<IItemAgent> OnPickUp { get; set; }
+        public Action<Item> OnPickUp { get; set; }
 
         public virtual void Init()
         {
             BindCharacterComponents();
         }
 
-        public virtual void PickUp(IItemAssetAgent itemAssetAgent)
+        public virtual void PickUp(Item item)
         {
-            var itemAgent = itemAssetAgent.CreateAgent();
+            ResolveItemDependencies(item);
+            (item as IConsumerable)?.Use();
 
-            BindItem((itemAgent));
-            GetInterface<IConsumableAgent>(itemAgent)?.Use();
+            OnPickUp?.Invoke(item);
+        }
 
-            OnPickUp?.Invoke(itemAgent);
+        public void ResolveItemDependencies(Item item)
+        {
+            foreach (var ability in item.Abilities)
+            {
+                (ability as IBind<ICharacterStatus>)?.Bind(Status);
+            }
         }
 
         public virtual void UseItem(IItemAgent itemAgent)

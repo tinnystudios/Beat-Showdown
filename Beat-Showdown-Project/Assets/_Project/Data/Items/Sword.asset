@@ -17,3 +17,4 @@ MonoBehaviour:
   _EquipmentPrefab: {fileID: 757269164067278661, guid: 6095963ebdf028843af508323da81f41,
     type: 3}
   _RuntimeAnimator: {fileID: 22100000, guid: 31ee0b0597f0e594ebb0679fa32cfc3a, type: 2}
+  _WeaponType: 0

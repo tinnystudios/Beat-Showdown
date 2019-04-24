@@ -23,7 +23,7 @@ namespace App.Characters.Components
             Animator.SetTrigger("Attack");
         }
 
-        public void ChangeWeapon(IWeaponAgent weapon)
+        public void ChangeWeapon(IWeapon weapon)
         {
             // #TODO The Model of a weapon type would contain its AnimatorOverrideController
             switch (weapon.WeaponType)
