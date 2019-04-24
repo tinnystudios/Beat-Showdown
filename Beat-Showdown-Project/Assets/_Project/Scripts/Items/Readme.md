@@ -41,14 +41,13 @@ public class PotionModel : IBind<ICharacterStatus>
 }
 ```
 
-3. Finally a way to see it, Create an Asset.
-This asset is a Scriptable Object in the Editor, giving access to edit the PotionModel
+3. Create an Asset implementing ItemAssetBase<TModel> where TModel is your PotionModel. This will connect the Agent and Model together.
 
 ```
 [CreateAssetMenu]
 public class PotionAsset : ItemAssetBase<PotionModel>
 {
-	public override IItemAgent CreateAgent()
+    public override IItemAgent CreateAgent()
     {
         return new PotionAgent(Model);
     }
