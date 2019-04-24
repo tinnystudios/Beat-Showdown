@@ -18,3 +18,8 @@ public class ItemSceneView : MonoBehaviour, IItemView
         transform.SetParent(anchor.transform);
     }
 }
+
+public class WeaponSceneView : ItemSceneView
+{
+    public Transform Pivot;
+}
