@@ -57,9 +57,13 @@ public class PotionAsset : ItemAssetBase<PotionModel>
 4. Right click in the Project view, `Create > PotionAsset` and configure it. You're Done!
 
 ### Creating a new weapon
-Creating a new weapon is slightly different as there are already base classes for it. You can still use the system above to create your own.
+Creating a weapon will introduce two new concepts.
 
-1. Create an Agent implementing IItemAgent<TModel> where TModel is the Model relating to your Agent
+#### Concepts
+1. EquipmentBaseAgent<TModel> : Returns a View which instantiates a Prefab for the Equipment
+2. EquipmentBaseModel : Contains prefab of type ItemSceneView
+
+1. Create an Agent implementing EquipmentBaseAgent<TModel> where TModel is the Model relating to your Agent
 
 ```
 public class GunAgent : EquipmentBaseAgent<GunModel>, IWeaponAgent
@@ -83,23 +87,20 @@ public class GunModel : EquipmentBaseModel, IWeaponModel
 }
 ```
 
-The View for the items do not need to be created, however to take advantage of Scriptable Objects in Unity
-we do have 1 more major step.
-
-3. Create a Scriptable Asset implementing ItemAssetBase<TModel> where TModel is the Model for the GunAgent
+3. Create an Item Asset implementing ItemAssetBase<TModel> where TModel is the Model for the GunAgent
 
 ```
 [CreateAssetMenu]
-public class GunAsset : ItemAssetBase<SwordModel>
+public class GunAsset : ItemAssetBase<GunModel>
 {
-	public override IItemAgent CreateAgent()
+    public override IItemAgent CreateAgent()
     {
         return new SwordAgent(Model);
     }
 }
 ```
 
-A Weapon need to be picked up and used. The next step will allow it.
-
 4. Right click in the Project view, `Create > GunAsset` and configure it.
 5. Create a GameObject and attach the `ItemSceneView` component on it and select your Item asset.
+
+The difference between a Potion which is consumerable and an Equipment is that there needs to be a Scene Prefab for the Equipment.
