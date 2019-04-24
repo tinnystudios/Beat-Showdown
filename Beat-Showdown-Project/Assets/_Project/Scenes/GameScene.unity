@@ -1781,5 +1781,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6120718746687016388, guid: 2b50ae794ce7db24a9325200619e414b,
+        type: 3}
+      propertyPath: BeatConstraints.Move
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b50ae794ce7db24a9325200619e414b, type: 3}

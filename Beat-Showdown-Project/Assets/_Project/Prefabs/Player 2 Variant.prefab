@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 7020934506792054574, guid: 7777acba09e5c5945b2cab50b159339d,
         type: 3}
       propertyPath: m_Name
-      value: Player 2
+      value: Player 2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7020934506792054569, guid: 7777acba09e5c5945b2cab50b159339d,
         type: 3}
@@ -73,11 +73,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: a075931703a75984f88f1cf628c6dc1d,
         type: 2}
-    - target: {fileID: 3551569149579162833, guid: 7777acba09e5c5945b2cab50b159339d,
-        type: 3}
-      propertyPath: BeatCondition
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7020934506792054570, guid: 7777acba09e5c5945b2cab50b159339d,
         type: 3}
       propertyPath: _MotionModel

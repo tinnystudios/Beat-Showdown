@@ -10,23 +10,17 @@ namespace App.Characters.Components
 
         public void Bind(Rigidbody rigidBody) { _rigidBody = rigidBody; }
 
-        public void Jump()
+        public virtual void Jump()
         {
             _rigidBody.velocity = Vector3.up * _MotionModel.JumpForce;
         }
 
-        public void Move(Vector3 direction)
+        public virtual void Move(Vector3 direction)
         {
             if(direction.magnitude != 0)
                 transform.rotation = Quaternion.LookRotation(direction);
 
             transform.position += direction * _MotionModel.MoveSpeed * Time.deltaTime;
         }
-    }
-
-    public interface ICharacterMotion
-    {
-        void Jump();
-        void Move(Vector3 direction);
     }
 }

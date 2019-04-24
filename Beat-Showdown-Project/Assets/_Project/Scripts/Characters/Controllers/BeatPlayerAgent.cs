@@ -1,5 +1,6 @@
 ﻿using App.Characters.Controllers;
 using App.Items.Models;
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -7,10 +8,12 @@ using UnityEngine;
 /// </summary>
 public class BeatPlayerAgent : PlayerCharacterAgent, IBind<BeatMeterAgent>
 {
-    [Header("Configs")]
+    [Header("Beat Condition")]
     public BeatCondition BeatCondition;
-    public PlayerInputConfig InputConfig;
+    public BeatConditionConstraints BeatConstraints;
 
+    [Header("Configs")]
+    public PlayerInputConfig InputConfig;
     public IPickable ClosestPickable { get; private set; }
 
     public void Bind(BeatMeterAgent beatMeterAgent) { BeatCondition?.Bind(beatMeterAgent); }
@@ -28,7 +31,7 @@ public class BeatPlayerAgent : PlayerCharacterAgent, IBind<BeatMeterAgent>
 
     public void Move(Vector2 delta)
     {
-        if (!Pass) return;
+        if (BeatConstraints.Move && !Pass) return;
 
         var dir = new Vector3(delta.x, 0, delta.y);
         Motion.Move(dir);
@@ -36,19 +39,19 @@ public class BeatPlayerAgent : PlayerCharacterAgent, IBind<BeatMeterAgent>
 
     public void Attack()
     {
-        if (!Pass) return;
+        if (BeatConstraints.Attack && !Pass) return;
         Combat.Attack();
     }
 
     public void Jump()
     {
-        if (!Pass) return;
+        if (BeatConstraints.Jump && !Pass) return;
         Motion.Jump();
     }
 
     public void PickUp()
     {
-        if (!Pass) return;
+        if (BeatConstraints.PickUp && !Pass) return;
 
         if (ClosestPickable != null)
             PickUp(ClosestPickable.PickItem());
@@ -58,4 +61,13 @@ public class BeatPlayerAgent : PlayerCharacterAgent, IBind<BeatMeterAgent>
     {
         ClosestPickable = Sensory.FindNearestPickable(transform.position, transform.forward);
     }
+}
+
+[Serializable]
+public class BeatConditionConstraints
+{
+    public bool Move;
+    public bool Jump;
+    public bool Attack;
+    public bool PickUp;
 }
