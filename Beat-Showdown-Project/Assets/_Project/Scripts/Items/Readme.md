@@ -96,9 +96,10 @@ public class GunAsset : ItemAssetBase<SwordModel>
     {
         return new SwordAgent(Model);
     }
-}```
+}
+```
 
 A Weapon need to be picked up and used. The next step will allow it.
 
 4. Right click in the Project view, `Create > GunAsset` and configure it.
-4. Create a GameObject and attach the `ItemSceneView` component on it and select your Item asset.
+5. Create a GameObject and attach the `ItemSceneView` component on it and select your Item asset.
