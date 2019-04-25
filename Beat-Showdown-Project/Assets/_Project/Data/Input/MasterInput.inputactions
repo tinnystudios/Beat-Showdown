@@ -19,10 +19,10 @@
                     "name": "Move",
                     "id": "911cfba4-3ddb-476c-9be7-21712eccd01b",
                     "expectedControlLayout": "",
-                    "continuous": false,
+                    "continuous": true,
                     "passThrough": false,
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "",
                     "bindings": []
                 },
                 {
