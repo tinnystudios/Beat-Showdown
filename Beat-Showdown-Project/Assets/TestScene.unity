@@ -454,6 +454,7 @@ Transform:
   - {fileID: 304905852}
   - {fileID: 1458146105}
   - {fileID: 1799890537}
+  - {fileID: 1617600225}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -462,7 +463,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 887928215}
     m_Modifications:
     - target: {fileID: 901717938701286160, guid: 14de266f17e29f44a948f3b7a84e353a,
         type: 3}
@@ -487,17 +488,17 @@ PrefabInstance:
     - target: {fileID: 3378429016746429362, guid: 14de266f17e29f44a948f3b7a84e353a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3378429016746429362, guid: 14de266f17e29f44a948f3b7a84e353a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3378429016746429362, guid: 14de266f17e29f44a948f3b7a84e353a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3378429016746429362, guid: 14de266f17e29f44a948f3b7a84e353a,
         type: 3}
@@ -507,7 +508,7 @@ PrefabInstance:
     - target: {fileID: 3378429016746429362, guid: 14de266f17e29f44a948f3b7a84e353a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3378429016746429362, guid: 14de266f17e29f44a948f3b7a84e353a,
         type: 3}
@@ -526,46 +527,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14de266f17e29f44a948f3b7a84e353a, type: 3}
---- !u!1 &1296899767 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6392618295238812268, guid: f8e9dd28da415ba4588a85e60badc0ae,
-    type: 3}
-  m_PrefabInstance: {fileID: 6392618294378134747}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1296899772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6392618295238812263, guid: f8e9dd28da415ba4588a85e60badc0ae,
     type: 3}
   m_PrefabInstance: {fileID: 6392618294378134747}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1296899776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296899767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d36ce48bfde3cc048a49afcd11a40628, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sensory: {fileID: 1296899777}
---- !u!114 &1296899777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296899767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b2560e75f9ae78489e5ea91a57cb2fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SensorLayer:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!1 &1458146101
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,6 +715,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512587669}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1617600225 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3378429016746429362, guid: 14de266f17e29f44a948f3b7a84e353a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1162705652}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1642476316
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,11 +871,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6392618295238812258, guid: f8e9dd28da415ba4588a85e60badc0ae,
-        type: 3}
-      propertyPath: Item
-      value: 
-      objectReference: {fileID: 11400000, guid: 3b3ff3e478468bd4cb567e4c5df9a688,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8e9dd28da415ba4588a85e60badc0ae, type: 3}
