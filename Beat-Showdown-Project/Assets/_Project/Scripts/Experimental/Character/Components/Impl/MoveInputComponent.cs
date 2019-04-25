@@ -7,7 +7,7 @@ namespace Experimental
     {
         public override void Move()
         {
-            transform.position += Model.MoveDir * Time.deltaTime * MoveSpeed;
+            transform.position += Model.MoveDelta * Time.deltaTime * MoveSpeed;
         }
     }
 }

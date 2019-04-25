@@ -6,35 +6,32 @@ namespace Experimental
     {
         public PlayerInputConfig InputConfig;
 
-        public Vector3 MoveDir { get; set; }
+        public Vector3 MoveDelta { get; set; }
 
         protected override void Awake()
         {
             base.Awake();
+            MapInputToActions();
         }
 
-        public void OnUserMove(Vector3 joystick)
+        private void MapInputToActions()
         {
-            MoveDir = joystick;
-            OnMove?.Invoke();
+            InputConfig.Init();
+
+            InputConfig.MoveAction.performed += context =>
+            {
+                var delta = context.ReadValue<Vector2>();
+                MoveDelta = new Vector3(delta.x, 0, delta.y);
+                OnMove?.Invoke();
+            };
+
+            InputConfig.AttackAction.performed += context => OnAttack?.Invoke();
+            InputConfig.JumpAction.performed += context => OnJump?.Invoke();
+            InputConfig.PickUpAction.performed += context => OnPickUp.Invoke();
         }
 
         private void Update()
         {
-            var x = Input.GetAxis("Horizontal");
-            var z = Input.GetAxis("Vertical");
-
-            OnUserMove(new Vector3(x, 0, z));
-
-            if (Input.GetKeyDown(KeyCode.Space))
-                OnJump?.Invoke();
-
-            if (Input.GetKeyDown(KeyCode.E))
-                OnPickUp?.Invoke();
-
-            if (Input.GetKeyDown(KeyCode.F))
-                OnAttack?.Invoke();
-
             OnUpdateComponents?.Invoke();
         }
 

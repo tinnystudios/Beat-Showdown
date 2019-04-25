@@ -10,6 +10,6 @@ namespace Experimental
 
     public interface IMovementInput : IMovement
     {
-        Vector3 MoveDir { get; }
+        Vector3 MoveDelta { get; }
     }
 }
