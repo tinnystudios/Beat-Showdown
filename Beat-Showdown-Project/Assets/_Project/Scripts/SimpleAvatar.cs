@@ -2,8 +2,8 @@
 using UnityEngine;
 
 [Serializable]
-public class SimpleAvatar : ICharacterAvatar
+public class SimpleAvatar : IWeaponAvatar
 {
     [SerializeField] private AvatarAnchorView _PrimaryWeapon;
-    public AvatarAnchorView PrimaryWeapon => _PrimaryWeapon;
+    public AvatarAnchorView PrimaryWeaponAvatar => _PrimaryWeapon;
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class CharacterEquipment<T> : MonoBehaviour, IBind<IPickableAgent>, ICharacterEquipment where T : ICharacterAvatar
+public class CharacterEquipment<T> : MonoBehaviour, IBind<IPickableAgent>, ICharacterEquipment where T : IWeaponAvatar
 {
     public T Avatar;
 
@@ -36,7 +36,7 @@ public class CharacterEquipment<T> : MonoBehaviour, IBind<IPickableAgent>, IChar
         if (WeaponAgent != null)
             UnEquip(WeaponAgent);
 
-        var weaponAnchorTransform = Avatar.PrimaryWeapon.transform;
+        var weaponAnchorTransform = Avatar.PrimaryWeaponAvatar.transform;
         var weaponInstance = Instantiate(weapon.WeaponPrefab, weaponAnchorTransform.position, weaponAnchorTransform.rotation);
 
         weaponInstance.transform.SetParent(weaponAnchorTransform);

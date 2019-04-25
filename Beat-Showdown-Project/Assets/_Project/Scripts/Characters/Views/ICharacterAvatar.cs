@@ -1,4 +1,4 @@
-﻿public interface ICharacterAvatar
+﻿public interface IWeaponAvatar
 {
-    AvatarAnchorView PrimaryWeapon { get; }
+    AvatarAnchorView PrimaryWeaponAvatar { get; }
 }

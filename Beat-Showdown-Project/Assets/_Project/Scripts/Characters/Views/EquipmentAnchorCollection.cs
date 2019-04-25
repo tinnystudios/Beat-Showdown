@@ -9,13 +9,13 @@ public class HumanAvatar : IHumanAvatar
     [SerializeField] private AvatarAnchorView _head;
 
     public AvatarAnchorView LeftHand => _leftHand;
-    public AvatarAnchorView RightHand => PrimaryWeapon;
+    public AvatarAnchorView RightHand => PrimaryWeaponAvatar;
     public AvatarAnchorView Head => _head;
 
-    public AvatarAnchorView PrimaryWeapon => _rightHand;
+    public AvatarAnchorView PrimaryWeaponAvatar => _rightHand;
 }
 
-public interface IHumanAvatar : ICharacterAvatar
+public interface IHumanAvatar : IWeaponAvatar
 {
     AvatarAnchorView LeftHand { get; }
     AvatarAnchorView RightHand { get; }
