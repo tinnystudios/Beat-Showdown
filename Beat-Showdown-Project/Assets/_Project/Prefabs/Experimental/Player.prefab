@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6392618295238812261}
   - component: {fileID: 6392618295238812262}
   - component: {fileID: 6392618295238812260}
+  - component: {fileID: 1296899776}
   - component: {fileID: 6392618295238812257}
   m_Layer: 0
   m_Name: Player
@@ -50,7 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5d9acf56399414a8157a6cc6a88bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 8e5873e6a0f396d488a9ef5efe0367e9, type: 2}
 --- !u!114 &6392618295238812259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +114,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a75897d43614947a7267d9d9387264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1296899776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6392618295238812268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d36ce48bfde3cc048a49afcd11a40628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickableLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!54 &6392618295238812257
 Rigidbody:
   m_ObjectHideFlags: 0

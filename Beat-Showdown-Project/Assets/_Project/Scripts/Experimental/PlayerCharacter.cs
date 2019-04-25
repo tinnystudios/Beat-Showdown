@@ -27,6 +27,8 @@ namespace Experimental
 
             if (Input.GetKeyDown(KeyCode.F))
                 OnAttack?.Invoke();
+
+            OnUpdateComponents?.Invoke();
         }
 
         protected override void ResolveDependencies()

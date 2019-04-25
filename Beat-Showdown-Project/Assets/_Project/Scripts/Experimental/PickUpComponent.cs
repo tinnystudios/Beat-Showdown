@@ -1,22 +1,26 @@
-﻿using App.Characters.Controllers;
-using App.Items.Models;
+﻿using App.Items.Models;
 using Experimental;
 using UnityEngine;
 
 [RequireComponent(typeof(InventoryComponent))]
 public class PickUpComponent : CharacterComponentBase<InventoryComponent, SmartCharacter>
 {
-    public CharacterSensory Sensory;
+    public LayerMask PickableLayer;
+    public PickableSensor Sensor;
+
     private IPickable _pickInterface;
 
     public override void Activate(SmartCharacter source)
     {
+        Sensor = new PickableSensor(PickableLayer, transform);
+
         source.OnPickUp += TryPickUp;
+        source.OnUpdateComponents += Sense;
     }
 
-    private void Update()
+    private void Sense()
     {
-        _pickInterface = Sensory.FindNearestPickable(transform.position, transform.forward);
+        _pickInterface = Sensor.FindNearestPickable(transform.position, transform.forward);
     }
 
     private void TryPickUp()
