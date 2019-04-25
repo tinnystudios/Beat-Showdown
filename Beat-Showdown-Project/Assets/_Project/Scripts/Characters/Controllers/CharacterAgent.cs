@@ -32,37 +32,31 @@ namespace App.Characters.Controllers
         public TEquipment Equipment;
         public TAnimator Animator;
 
-        public Action<Item> OnPickUp { get; set; }
+        public Action<IItemAgent> OnPickUp { get; set; }
 
         public virtual void Init()
         {
             BindCharacterComponents();
         }
 
-        public virtual void PickUp(Item item)
+        public virtual void PickUp(IItemAssetAgent itemAssetAgent)
         {
-            ResolveItemDependencies(item);
-            (item as IConsumerable)?.Use();
+            var itemAgent = itemAssetAgent.CreateAgent();
 
-            OnPickUp?.Invoke(item);
+            BindItem((itemAgent));
+            GetInterface<IConsumableAgent>(itemAgent)?.Use();
+
+            OnPickUp?.Invoke(itemAgent);
         }
 
-        public void ResolveItemDependencies(Item item)
+        public virtual void UseItem(IItemAgent itemAgent)
         {
-            foreach (var ability in item.Abilities)
-            {
-                (ability as IBind<ICharacterStatus>)?.Bind(Status);
-            }
+            itemAgent.Use();
         }
 
-        public virtual void UseItem(Item item)
+        public T GetInterface<T>(IItemAgent itemAgent) where T : class
         {
-            item.Use();
-        }
-
-        public T GetInterface<T>(Item item) where T : class
-        {
-            return item as T;
+            return itemAgent as T;
         }
 
         protected virtual void BindCharacterComponents()
@@ -75,7 +69,7 @@ namespace App.Characters.Controllers
             this.Bind<IBind<ICharacterStatus>, ICharacterStatus>(Status);
         }
 
-        public virtual void BindItem(Item itemAgent)
+        public virtual void BindItem(IItemAgent itemAgent)
         {
             GetInterface<IBind<ICharacterStatus>>(itemAgent)?.Bind(Status);
             GetInterface<IBind<ICharacterCombat>>(itemAgent)?.Bind(Combat);

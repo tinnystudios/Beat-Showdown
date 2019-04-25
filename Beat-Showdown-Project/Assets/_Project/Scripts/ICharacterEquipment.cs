@@ -2,10 +2,10 @@
 
 public interface ICharacterEquipment
 {
-    Action<IWeapon> OnEquip { get; set; }
-    Action<IWeapon> OnUnequip { get; set; }
+    Action<IWeaponAgent> OnEquip { get; set; }
+    Action<IWeaponAgent> OnUnequip { get; set; }
 
-    IWeapon WeaponAgent { get; }
+    IWeaponAgent WeaponAgent { get; }
 
-    void TryEquip(Item item);
+    void TryEquip(IItemAgent itemAgent);
 }

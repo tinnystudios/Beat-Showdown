@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9425786871904373, guid: 5a1d4b5c34b9a8446bb858e7b0cd3df7, type: 3}
       propertyPath: m_Name
-      value: GunHumanEnemy Variant
+      value: GunHumanEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 3223325065044300882, guid: 5a1d4b5c34b9a8446bb858e7b0cd3df7,
         type: 3}
@@ -80,7 +80,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Weapon
       value: 
-      objectReference: {fileID: 11400000, guid: 8e5873e6a0f396d488a9ef5efe0367e9,
+      objectReference: {fileID: 11400000, guid: 559981aff9ac48445a94d1bc193517f6,
         type: 2}
     - target: {fileID: 5674418299518361550, guid: 5a1d4b5c34b9a8446bb858e7b0cd3df7,
         type: 3}

@@ -5,50 +5,33 @@ public class CharacterEquipment<T> : MonoBehaviour, IBind<IPickableAgent>, IChar
 {
     public T Avatar;
 
-    public Action<IWeapon> OnEquip { get; set; }
-    public Action<IWeapon> OnUnequip { get; set; }
+    public Action<IWeaponAgent> OnEquip { get; set; }
+    public Action<IWeaponAgent> OnUnequip { get; set; }
 
-    public IWeapon WeaponAgent { get; private set; }
+    public IWeaponAgent WeaponAgent { get; private set; }
 
     public void Bind(IPickableAgent pickableAgent) { pickableAgent.OnPickUp += TryEquip; }
 
-    public void TryEquip(Item item)
+    public void TryEquip(IItemAgent itemAgent)
     {
-        var weapon = item as IWeapon;
+        var weapon = itemAgent as IWeaponAgent;
         if (weapon != null)
-        {
             Equip(weapon);
-            BindDependencies(item, weapon);
-        }
     }
 
-    // These are dependencies that need to Bind after the object is made
-    public void BindDependencies(Item item, IWeapon weapon)
-    {
-        foreach (var ability in item.Abilities)
-        {
-            (ability as IBind<IShootLocation>)?.Bind(weapon.Instance.Pivot);
-        }
-    }
-
-    public void Equip(IWeapon weapon)
+    public void Equip(IWeaponAgent weaponAgent)
     {
         if (WeaponAgent != null)
             UnEquip(WeaponAgent);
 
-        var weaponAnchorTransform = Avatar.PrimaryWeapon.transform;
-        var weaponInstance = Instantiate(weapon.WeaponPrefab, weaponAnchorTransform.position, weaponAnchorTransform.rotation);
+        weaponAgent.View().SetAvatar(Avatar.PrimaryWeapon);
+        WeaponAgent = weaponAgent;
 
-        weaponInstance.transform.SetParent(weaponAnchorTransform);
-        weapon.Instance = weaponInstance;
-
-        WeaponAgent = weapon;
-        
         OnEquip?.Invoke(WeaponAgent);
     }
 
-    public void UnEquip(IWeapon weapon)
+    public void UnEquip(IWeaponAgent itemAgent)
     {
-        Destroy(weapon.Instance.gameObject);
+        itemAgent.View().Exit();
     }
 }

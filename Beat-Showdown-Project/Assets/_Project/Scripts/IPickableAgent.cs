@@ -2,6 +2,6 @@
 
 public interface IPickableAgent
 {
-    Action<Item> OnPickUp { get; set; }
-    void PickUp(Item item);
+    Action<IItemAgent> OnPickUp { get; set; }
+    void PickUp(IItemAssetAgent itemAssetAgent);
 }
