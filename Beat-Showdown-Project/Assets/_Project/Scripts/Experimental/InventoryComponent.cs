@@ -6,7 +6,7 @@ public class InventoryComponent : CharacterComponentBase<EquipmentComponent, Sma
 {
     public override void Activate(SmartCharacter source)
     {
-        source.OnPickUp += Add;
+
     }
 
     public void Add(Item item)

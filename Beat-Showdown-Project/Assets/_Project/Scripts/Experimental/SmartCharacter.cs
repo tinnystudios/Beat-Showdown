@@ -9,7 +9,7 @@ namespace Experimental
         public Action OnJump { get; set; }
         public Action OnAttack { get; set; }
 
-        public Action<Item> OnPickUp { get; set; }
+        public Action OnPickUp { get; set; }
 
         protected virtual void Awake()
         {

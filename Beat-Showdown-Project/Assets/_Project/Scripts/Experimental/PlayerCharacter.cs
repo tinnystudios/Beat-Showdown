@@ -4,8 +4,6 @@ namespace Experimental
 {
     public class PlayerCharacter : SmartCharacter, IMovementInput, ICharacterInput
     {
-        // Temp
-        public Item Item;
         public Vector3 MoveDir { get; set; }
 
         public void OnUserMove(Vector3 joystick)
@@ -22,14 +20,10 @@ namespace Experimental
             OnUserMove(new Vector3(x, 0, z));
 
             if (Input.GetKeyDown(KeyCode.Space))
-            {
                 OnJump?.Invoke();
-            }
 
             if (Input.GetKeyDown(KeyCode.E))
-            {
-                OnPickUp?.Invoke(Item);
-            }
+                OnPickUp?.Invoke();
 
             if (Input.GetKeyDown(KeyCode.F))
                 OnAttack?.Invoke();
