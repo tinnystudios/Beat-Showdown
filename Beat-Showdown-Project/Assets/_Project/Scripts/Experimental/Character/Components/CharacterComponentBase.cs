@@ -8,7 +8,7 @@ namespace Experimental
     {
         protected TModel Model;
 
-        public void Bind(TModel dependency)
+        public virtual void Bind(TModel dependency)
         {
             Model = dependency;
         }

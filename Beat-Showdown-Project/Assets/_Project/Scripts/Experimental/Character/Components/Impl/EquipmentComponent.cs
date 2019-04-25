@@ -1,15 +1,20 @@
-﻿using UnityEngine;
+﻿using Experimental;
+using System;
+using UnityEngine;
 
-public class EquipmentComponent : MonoBehaviour, IWeaponAvatar, IBind<Animator>
+public class EquipmentComponent : CharacterComponentBase<Animator, SmartCharacter>, IWeaponAvatar
 {
     public AvatarAnchorView WeaponAvatar;
     public AvatarAnchorView PrimaryWeaponAvatar => WeaponAvatar;
 
     public IWeapon Weapon;
 
-    private Animator _animator;
+    public Action<Item> OnEquip;
 
-    public void Bind(Animator animator) { _animator = animator; }
+    public override void Activate(SmartCharacter source)
+    {
+        OnEquip += source.BindItemOnEquip;
+    }
 
     public void TryEquip(Item item)
     {
@@ -17,7 +22,7 @@ public class EquipmentComponent : MonoBehaviour, IWeaponAvatar, IBind<Animator>
         if (weapon != null)
         {
             Equip(weapon);
-            BindDependencies(item, weapon);
+            OnEquip?.Invoke(item);
         }
     }
 
@@ -25,23 +30,15 @@ public class EquipmentComponent : MonoBehaviour, IWeaponAvatar, IBind<Animator>
     {
         if (Weapon != null)
             Weapon.Instance.Exit();
-
+        
         var pivot = PrimaryWeaponAvatar.transform;
         var weaponInstance = Instantiate(weapon.WeaponPrefab);
 
         weapon.Instance = weaponInstance;
         weaponInstance.SetAvatar(PrimaryWeaponAvatar);
 
-        _animator.runtimeAnimatorController = weapon.RuntimeAnimator;
+        Model.runtimeAnimatorController = weapon.RuntimeAnimator;
 
         Weapon = weapon;
-    }
-
-    public void BindDependencies(Item item, IWeapon weapon)
-    {
-        foreach (var ability in item.Abilities)
-        {
-            (ability as IBind<IShootLocation>)?.Bind(weapon.Instance.Pivot);
-        }
     }
 }

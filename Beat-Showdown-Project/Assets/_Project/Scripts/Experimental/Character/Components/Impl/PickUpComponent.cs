@@ -33,6 +33,6 @@ public class PickUpComponent : CharacterComponentBase<InventoryComponent, SmartC
 
     private void PickUp(Item item)
     {
-        Model.Add(item);
+        Model.Add(item.Clone());
     }
 }

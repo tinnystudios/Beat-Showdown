@@ -1,4 +1,6 @@
-﻿public interface IPlayerCharacter
-{
+﻿using UnityEngine;
 
+public interface IPlayerCharacter
+{
+    Transform transform { get; }
 }

@@ -4,7 +4,19 @@ using UnityEngine;
 public class ItemAssetView : MonoBehaviour, IPickable
 {
     public Item ItemAsset;
-    public Renderer Renderer;
+
+    private Renderer[] _renderer;
+
+    private void Awake()
+    {
+        _renderer = GetComponentsInChildren<Renderer>();
+        Deselect();
+    }
+
+    private void Update()
+    {
+        transform.Rotate(Vector3.up, 10 * Time.deltaTime);
+    }
 
     public virtual Item GetItem()
     {
@@ -14,11 +26,13 @@ public class ItemAssetView : MonoBehaviour, IPickable
 
     public virtual void Select()
     {
-        Renderer.material.color = Color.blue;
+        foreach (var r in _renderer)
+            r.material.color = Color.blue;
     }
 
     public virtual void Deselect()
     {
-        Renderer.material.color = Color.white;
+        foreach (var r in _renderer)
+            r.material.color = Color.black;
     }
 }

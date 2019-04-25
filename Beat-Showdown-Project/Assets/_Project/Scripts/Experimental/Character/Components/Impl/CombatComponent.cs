@@ -11,14 +11,14 @@ public class CombatComponent : CharacterComponentBase<EquipmentComponent, SmartC
         source.OnAttack += Attack;
     }
 
-    public void Bind(Animator animator)
+    public virtual void Bind(Animator animator)
     {
         _animator = animator;
     }
 
-    private void Attack()
+    public virtual void Attack()
     {
-        Model.Weapon.Attack();
+        Model.Weapon?.Attack();
         _animator.SetTrigger("Attack");
     }
 }

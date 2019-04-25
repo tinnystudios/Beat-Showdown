@@ -5,6 +5,7 @@
         private void Update()
         {
             OnMove?.Invoke();
+            OnAttack?.Invoke();
         }
     }
 }

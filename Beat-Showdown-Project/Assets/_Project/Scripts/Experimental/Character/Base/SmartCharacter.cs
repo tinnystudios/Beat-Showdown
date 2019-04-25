@@ -1,10 +1,13 @@
-﻿using System;
+﻿using App.Characters.Models;
+using System;
 using UnityEngine;
 
 namespace Experimental
 {
     public abstract class SmartCharacter : CharacterBase, IMovement
     {
+        public CharacterStatus Status = new CharacterStatus(hp: 5, maxHp: 10);
+
         public Action OnMove { get; set; }
         public Action OnJump { get; set; }
         public Action OnAttack { get; set; }
@@ -29,6 +32,29 @@ namespace Experimental
             this.Bind<IBind<IWeaponAvatar>, IWeaponAvatar>();
             this.Bind<IBind<EquipmentComponent>, EquipmentComponent>();
             this.Bind<IBind<Animator>, Animator>();
+            this.Bind<IBind<ICharacterStatus>, ICharacterStatus>(Status);
+        }
+
+        public virtual void BindItemOnPickUp(Item item)
+        {
+            BindAbilities<ICharacterStatus>(item, Status);
+        }
+
+        public virtual void BindItemOnEquip(Item item)
+        {
+            var weapon = item as IWeapon;
+            if (weapon != null)
+            {
+                BindAbilities<IShootLocation>(item, weapon.Instance.Pivot);
+            }
+        }
+
+        protected void BindAbilities<T>(Item item, T source) where T : class
+        {
+            foreach (var ability in item.Abilities)
+            {
+                (ability as IBind<T>)?.Bind(source);
+            }
         }
     }
 }
