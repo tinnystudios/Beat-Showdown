@@ -1,8 +1,8 @@
 ﻿namespace Experimental
 {
-    public interface ICharacterComponent<T>
+    public interface IObserver<T>
     {
-        void Activate(T character);
+        void Register(T character);
     }
 
     public interface ICharacter

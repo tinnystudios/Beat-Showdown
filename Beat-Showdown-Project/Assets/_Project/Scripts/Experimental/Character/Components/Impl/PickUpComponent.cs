@@ -3,14 +3,14 @@ using Experimental;
 using UnityEngine;
 
 [RequireComponent(typeof(InventoryComponent))]
-public class PickUpComponent : CharacterComponentBase<InventoryComponent, SmartCharacter>
+public class PickUpComponent : CharacterObserverBase<InventoryComponent, SmartCharacter>
 {
     public LayerMask PickableLayer;
     public PickableSensor Sensor;
 
     private IPickable _pickInterface;
 
-    public override void Activate(SmartCharacter source)
+    public override void Register(SmartCharacter source)
     {
         Sensor = new PickableSensor(PickableLayer, transform);
 

@@ -22,8 +22,8 @@ namespace Experimental
 
         protected virtual void ResolveDependencies()
         {
-            foreach (var c in GetComponentsInChildren<ICharacterComponent<SmartCharacter>>())
-                c.Activate(this);
+            foreach (var c in GetComponentsInChildren<IObserver<SmartCharacter>>())
+                c.Register(this);
 
             this.Bind<IBind<ITargetProvider>, ITargetProvider>();
             this.Bind<IBind<IMovement>, IMovement>(this);

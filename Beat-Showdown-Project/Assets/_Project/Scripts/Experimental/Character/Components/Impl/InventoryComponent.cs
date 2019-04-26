@@ -3,11 +3,11 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(EquipmentComponent))]
-public class InventoryComponent : CharacterComponentBase<EquipmentComponent, SmartCharacter>
+public class InventoryComponent : CharacterObserverBase<EquipmentComponent, SmartCharacter>
 {
     public Action<Item> OnItemPickUp;
 
-    public override void Activate(SmartCharacter source)
+    public override void Register(SmartCharacter source)
     {
         OnItemPickUp += source.BindItemOnPickUp;
     }

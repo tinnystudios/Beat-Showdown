@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-public class EquipmentComponent : CharacterComponentBase<Animator, SmartCharacter>, IWeaponAvatar
+public class EquipmentComponent : CharacterObserverBase<Animator, SmartCharacter>, IWeaponAvatar
 {
     public AvatarAnchorView WeaponAvatar;
     public AvatarAnchorView PrimaryWeaponAvatar => WeaponAvatar;
@@ -11,7 +11,7 @@ public class EquipmentComponent : CharacterComponentBase<Animator, SmartCharacte
 
     public Action<Item> OnEquip;
 
-    public override void Activate(SmartCharacter source)
+    public override void Register(SmartCharacter source)
     {
         OnEquip += source.BindItemOnEquip;
     }

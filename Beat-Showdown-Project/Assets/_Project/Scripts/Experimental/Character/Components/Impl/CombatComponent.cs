@@ -2,11 +2,11 @@
 using UnityEngine;
 
 [RequireComponent(typeof(EquipmentComponent))]
-public class CombatComponent : CharacterComponentBase<EquipmentComponent, SmartCharacter>, IBind<Animator>
+public class CombatComponent : CharacterObserverBase<EquipmentComponent, SmartCharacter>, IBind<Animator>
 {
     private Animator _animator;
 
-    public override void Activate(SmartCharacter source)
+    public override void Register(SmartCharacter source)
     {
         source.OnAttack += Attack;
     }

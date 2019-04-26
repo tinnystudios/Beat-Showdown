@@ -1,10 +1,10 @@
 ﻿namespace Experimental
 {
-    public abstract class MovementBase<T> : CharacterComponentBase<T, SmartCharacter> where T : class
+    public abstract class MovementBase<T> : CharacterObserverBase<T, SmartCharacter> where T : class
     {
         public float MoveSpeed = 5;
 
-        public override void Activate(SmartCharacter smartCharacter)
+        public override void Register(SmartCharacter smartCharacter)
         {
             smartCharacter.OnMove += Move;
         }

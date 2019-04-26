@@ -2,11 +2,11 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class JumpComponent : CharacterComponentBase<Rigidbody, SmartCharacter>
+public class JumpComponent : CharacterObserverBase<Rigidbody, SmartCharacter>
 {
     public float Velocity = 10;
 
-    public override void Activate(SmartCharacter smartCharacter)
+    public override void Register(SmartCharacter smartCharacter)
     {
         smartCharacter.OnJump += Jump;
     }
