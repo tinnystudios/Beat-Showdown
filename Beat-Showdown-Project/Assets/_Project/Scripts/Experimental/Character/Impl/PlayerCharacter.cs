@@ -2,10 +2,17 @@
 
 namespace Experimental
 {
+    public class BeatCharacter : PlayerCharacter
+    {
+        [Header("Beat")]
+        public BeatMeterAgent BeatMeterAgent;
+        public BeatCondition BeatCondition;
+
+    }
+
     public class PlayerCharacter : SmartCharacter, IMovementInput, ICharacterInput, IPlayerCharacter
     {
         public PlayerInputConfig InputConfig;
-
         public Vector3 MoveDelta { get; set; }
 
         protected override void Awake()
@@ -14,7 +21,7 @@ namespace Experimental
             MapInputToActions();
         }
 
-        private void MapInputToActions()
+        protected virtual void MapInputToActions()
         {
             InputConfig.Init();
 
@@ -25,9 +32,24 @@ namespace Experimental
                 OnMove?.Invoke();
             };
 
-            InputConfig.AttackAction.performed += context => OnAttack?.Invoke();
-            InputConfig.JumpAction.performed += context => OnJump?.Invoke();
-            InputConfig.PickUpAction.performed += context => OnPickUp.Invoke();
+            InputConfig.AttackAction.performed += context => Attack();
+            InputConfig.JumpAction.performed += context => Jump();
+            InputConfig.PickUpAction.performed += context => PickUp();
+        }
+
+        protected virtual void Attack()
+        {
+            OnAttack?.Invoke();
+        }
+
+        protected virtual void Jump()
+        {
+            OnJump?.Invoke();
+        }
+
+        protected virtual void PickUp()
+        {
+            OnPickUp?.Invoke();
         }
 
         private void Update()
